@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { VscMail, VscLock } from "react-icons/vsc";
-
+import { BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 const MainContainer = styled.div`
   background: skyblue;
   height: 500px;
@@ -100,8 +101,32 @@ function Main() {
     <>
       <MainContainer>
         <BtnContainer>
-          <FacebookBtn>Contunue with FaceBook</FacebookBtn>
-          <GoogleBtn>Continue with Google</GoogleBtn>
+          <FacebookBtn>
+            <BsFacebook
+              style={{
+                marginLeft: "-40px",
+                marginRight: "20px",
+                width: "18px",
+                height: "18px",
+                marginTop: "3px",
+                boxSizing: "border-box",
+              }}
+            />
+            Contunue with FaceBook
+          </FacebookBtn>
+          <GoogleBtn>
+            <FcGoogle
+              style={{
+                marginLeft: "-60px",
+                marginRight: "20px",
+                width: "19px",
+                height: "19px",
+                marginTop: "3px",
+                boxSizing: "border-box",
+              }}
+            />
+            Continue with Google
+          </GoogleBtn>
           <TextBlock>or 이 들어갈 자리입니다(with 수평선)</TextBlock>
           <CreateInput>
             <InputStyle placeholder="Create account with Email" />
@@ -110,7 +135,7 @@ function Main() {
                 width: "30px",
                 height: "30px",
                 position: "absolute",
-                right: "36%",
+                right: "40%",
               }}
             />
           </CreateInput>
@@ -121,7 +146,7 @@ function Main() {
                 width: "30px",
                 height: "30px",
                 position: "absolute",
-                right: "36%",
+                right: "40%",
               }}
             />
           </CreateInput>
@@ -133,7 +158,7 @@ function Main() {
       </MainContainer>
       <NewInformationBlock>
         <strong style={{ color: "red" }}>NEW!&nbsp;</strong> What are the Best
-        Places in Work 2022?{" "}
+        Places in Work 2022?
         <strong style={{ color: "blue" }}>&nbsp;See Winners!</strong>
       </NewInformationBlock>
     </>
