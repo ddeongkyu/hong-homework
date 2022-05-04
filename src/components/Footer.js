@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { RiMoneyDollarCircleLine, RiPrinterLine } from "react-icons/ri";
 import { GiAlliedStar, GiMagnifyingGlass } from "react-icons/gi";
-import { AiOutlineDown, AiOutLineUp } from "react-icons/ai";
+import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { DiAndroid, DiApple } from "react-icons/di";
 import {
   FaInstagram,
@@ -61,7 +61,6 @@ const FooterClick = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 const FooterBottom = styled.div`
   width: 100%;
   height: 300px;
@@ -103,9 +102,25 @@ const SelectBlock = styled.div`
   background: green;
   width: 23%;
 `;
+const BoxboxBox = styled.div``;
+const FooterBottomTextContainer = styled.div`
+  margin-left: 120px;
+  margin-right: 120px;
+  display: flex;
+`;
+const FooterBottomTextInformation = styled.div`
+  font-size: 17px;
+  width: 36%;
+  float: left;
+`;
+const FooterBottomTextYes = styled.div`
+  line-height: 160%;
+  font-size: 17px;
+`;
 function Footer() {
-  const onClick = () => {
-    console.log("ㅇㅓ쩔티비");
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleInformation = () => {
+    setIsOpen((isOpen) => !isOpen);
   };
   return (
     <>
@@ -167,14 +182,145 @@ function Footer() {
         </IconContaner>
       </FooterMainContainer>
       <FooterClick>
-        <AiOutlineDown
-          style={{
-            width: "30px",
-            height: "30px",
-          }}
-          onClick={onClick}
-        />
+        <BoxboxBox onClick={() => toggleInformation()}>
+          {isOpen ? (
+            <AiOutlineUp
+              style={{
+                width: "30px",
+                height: "30px",
+              }}
+            />
+          ) : (
+            <AiOutlineDown
+              style={{
+                width: "30px",
+                height: "30px",
+              }}
+            />
+          )}
+        </BoxboxBox>
       </FooterClick>
+      {isOpen ? (
+        <FooterBottomTextContainer>
+          <FooterBottomTextInformation>
+            <strong>Popular Remote Jobs</strong>
+            <FooterBottomTextYes>
+              Data entry work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Customer service work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Copywriter work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Project manager work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Accountant work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Graphic designer work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Editor work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Software developer work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Healthcare work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Cyber security work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>Sales work from home jobs</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Transcription work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Pharmacist work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Recruiter work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Attorney work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>QA work from home jobs</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Social mdeia work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>HR work from home jobs</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Paralegal work from home jobs
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>UX work from home jobs</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Data scientist work from home jobs
+            </FooterBottomTextYes>
+          </FooterBottomTextInformation>
+          <FooterBottomTextInformation>
+            <strong>Popular Part-Time Jobs</strong>
+            <FooterBottomTextYes>Part time jobs in Toronto</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Montreal
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Calgary</FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Ottawa</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Edmonton
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Mississauga
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Hamilton
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Quebec</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Winnipeg
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Vancouver
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Brampton
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Surrey</FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Laval</FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in London</FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Markham</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Victoria
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Vaughan</FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Windsor</FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Halifax</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Gatineau
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Longueuil
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>Part time jobs in Burnaby</FooterBottomTextYes>{" "}
+            <FooterBottomTextYes>Part time jobs in Markham</FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Kitchener
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Sakatoon
+            </FooterBottomTextYes>
+            <FooterBottomTextYes>
+              Part time jobs in Richmond
+            </FooterBottomTextYes>
+          </FooterBottomTextInformation>
+          <FooterBottomTextInformation>
+            <strong>Browse Occupations</strong>
+          </FooterBottomTextInformation>
+        </FooterBottomTextContainer>
+      ) : null}
+
       <FooterBottom>
         <FooterBottomContainer>
           <FooterBottomInformation>LOGOHERE?</FooterBottomInformation>
