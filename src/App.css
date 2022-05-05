@@ -1,38 +1,260 @@
 .App {
   text-align: center;
 }
-
+/* --------HEAD-------- */
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 30px;
+  width: 48px;
+  cursor: pointer;
+}
+.z-index {
+  z-index: -5;
+}
+.logo {
+  height: 200px;
+  width: 150px;
+  cursor: pointer;
+  opacity: 0.7;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.HeadContainer {
+  height: 45px;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.LogoBlock {
+  width: 150px;
+  display: inline;
+  margin-top: 30px;
+}
+.NewTextBlock {
+  width: 80px;
+  font-size: 16px;
+  display: inline;
+  margin: 20px;
+}
+.TextLeft {
+  width: 130px;
+  font-size: 16px;
+  display: inline;
+  float: right;
+  margin-left: 30px;
+}
+/* --------MAIN-------- */
+.MainConainer {
+  background-image: url("../public/img/MAIN.jpeg");
+  background-size: cover;
+  height: 700px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+.BtnContainer {
+  width: 400px;
+  height: 300px;
+  box-sizing: border-box;
+}
+.FacebookBtn {
+  background: #3b5998;
+  color: white;
+  width: 300px;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 3px 8px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  border: thin solid black;
+  margin-left: 50px;
+  margin-top: 5px;
+  border: none;
+}
+.GoogleBtn {
+  display: block;
+  background: white;
+  color: #f76707;
+  width: 300px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 3px 8px;
+  margin-left: 50px;
+  margin-top: 7px;
+}
+.TextBlock {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.TextBlockB {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  color: #e64980;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.CreateInput {
+  width: 300px;
+  background: white;
+  color: #868e96;
+  border-radius: 5px;
+  border: none;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 3px 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+.ContinueBtn {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #4dabf7;
+  color: white;
+  margin-left: 100px;
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  margin-top: 17px;
+  margin-bottom: 10px;
+}
+.InputStyle {
+  border: none;
+  width: 200px;
+}
+.NewInformationBlock {
+  width: 100%;
+  height: 30px;
+  background: thistle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/*--------FOOTER--------*/
+.FooterMainContainer {
+  width: 100%;
+  height: 100%;
+  background: #e9ecef;
+}
+.TextBlockA {
+  font-size: 50px;
+  text-align: center;
+  color: black;
+  margin-bottom: 50px;
+  padding-top: 15px;
+}
+.IconContaner {
+  margin-left: 120px;
+  margin-right: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+.GlassBlock {
+  width: 25%;
+  float: left;
+  background: #e9ecef;
+}
+.StarBlock {
+  width: 25%;
+  float: left;
+  background: #e9ecef;
+}
+.DollorBlock {
+  width: 25%;
+  float: left;
+  background: #e9ecef;
+}
+.PrintBlock {
+  width: 25%;
+  float: left;
+  background: #e9ecef;
+}
+.FooterTextBlock {
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 15px;
+  font-weight: bold;
+}
+.FooterClick {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+}
+.FooterBottom {
+  width: 100%;
+  height: 300px;
+  border-top: 2px solid #ced4da;
+  box-sizing: border-box;
+}
+.FooterBottomContainer {
+  width: 100%;
+  height: 150px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+.FooterBottomInformation {
+  width: 13%;
+  margin-right: 5px;
+  box-sizing: border-box;
+  margin-top: 40px;
+  line-height: 160%;
+}
+.FooterBottomLogoBlock {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 60px;
+  border-bottom: 2px solid #ced4da;
+}
+.DownloadAppBlock {
+  width: 23%;
+}
+.TwitterLogoBlock {
+  width: 23%;
+  text-align: center;
+}
+.SelectBlock {
+  width: 23%;
+}
+.BoxboxBox {
+}
+.FooterBottomTextContainer {
+  margin-left: 120px;
+  margin-right: 120px;
+  display: flex;
+}
+.FooterBottomTextInformation {
+  font-size: 17px;
+  width: 36%;
+  float: left;
+}
+.FooterBottomTextYes {
+  line-height: 160%;
+  font-size: 17px;
+}
+.FootBottomInput {
+  margin-top: 10px;
+  width: 250px;
+  height: 20px;
 }
