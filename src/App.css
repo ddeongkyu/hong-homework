@@ -3,9 +3,8 @@
 }
 /* --------HEAD-------- */
 .App-logo {
-  height: 30px;
-  width: 48px;
-  cursor: pointer;
+  width: 80px;
+  height: 20px;
 }
 .z-index {
   z-index: -5;
@@ -26,20 +25,51 @@
 .LogoBlock {
   width: 150px;
   display: inline;
-  margin-top: 30px;
 }
 .NewTextBlock {
   width: 80px;
-  font-size: 16px;
+  font-size: 20px;
   display: inline;
-  margin: 20px;
+  margin-left: 20px;
 }
 .TextLeft {
   width: 130px;
-  font-size: 16px;
+  font-size: 20px;
   display: inline;
   float: right;
-  margin-left: 30px;
+  margin-left: 60px;
+}
+
+@media (max-width: 900px) {
+  .App-logo {
+    display: none;
+  }
+  .LogoBlock {
+    width: 20px;
+  }
+  .NewTextBlock {
+    font-size: 15px;
+  }
+  .TextLeft {
+    font-size: 15px;
+    margin-left: 20px;
+    width: 100px;
+  }
+}
+@media (max-width: 560px) {
+  .HeadContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .NewTextBlock {
+    font-size: 13px;
+    width: 80px;
+  }
+  .TextLeft {
+    font-size: 13px;
+    width: 80px;
+  }
 }
 /* --------MAIN-------- */
 .MainConainer {
@@ -144,6 +174,29 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
+.VscMail {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 40%;
+}
+@media (max-width: 900px) {
+  .MainConainer {
+    max-width: 900px;
+    height: 500px;
+  }
+  .VscMail {
+    right: 35%;
+  }
+}
+@media (max-width: 560px) {
+  .VscMail {
+    right: 27%;
+  }
+  .MainConainer {
+    height: 450px;
+  }
+}
 /*--------FOOTER--------*/
 .FooterMainContainer {
   width: 100%;
@@ -223,6 +276,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   height: 60px;
   border-bottom: 2px solid #ced4da;
@@ -236,8 +290,6 @@
 }
 .SelectBlock {
   width: 23%;
-}
-.BoxboxBox {
 }
 .FooterBottomTextContainer {
   margin-left: 120px;
@@ -257,4 +309,104 @@
   margin-top: 10px;
   width: 250px;
   height: 20px;
+}
+.GiMagnifyingGlass {
+  width: 40%;
+  height: 10%;
+  margin-left: 85px;
+}
+.Footerlogo {
+  height: 200px;
+  width: 150px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.FooterAppLogo {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+@media (max-width: 900px) {
+  .FooterTextBlock {
+    font-size: 15px;
+  }
+  .IconContaner {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .GiMagnifyingGlass {
+    width: 30%;
+    height: 10%;
+    margin-left: 80px;
+  }
+  .FooterBottomTextInformation {
+    margin-left: 25px;
+  }
+
+  .FooterBottomTextContainer {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .FooterBottomInformation {
+    font-size: 13px;
+  }
+  .Footerlogo {
+    width: 110px;
+    height: 180px;
+  }
+  .FooterAppLogo {
+    width: 25px;
+    height: 25px;
+  }
+  .DownloadAppBlock {
+    font-size: 13px;
+  }
+  .FootBottomInput {
+    width: 200px;
+    margin-left: 50px;
+  }
+}
+@media (max-width: 560px) {
+  .FooterTextBlock {
+    font-size: 12px;
+  }
+  .GiMagnifyingGlass {
+    width: 30%;
+    height: 10%;
+    margin-left: 50px;
+  }
+  .FooterBottomTextContainer {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .FooterBottomTextInformation {
+    margin-left: 15px;
+    font-size: 13px;
+  }
+
+  .FooterBottomTextYes {
+    font-size: 12px;
+  }
+  .FooterBottomInformation {
+    font-size: 11px;
+  }
+  .Footerlogo {
+    width: 70px;
+    height: 150px;
+  }
+  .FooterAppLogo {
+    width: 15px;
+    height: 15px;
+  }
+  .DownloadAppBlock {
+    font-size: 11px;
+  }
+  .FootBottomInput {
+    width: 150px;
+    margin-left: 20px;
+  }
+  .DownloadAppBlock {
+    width: 30%;
+  }
 }

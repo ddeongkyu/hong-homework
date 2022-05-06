@@ -23,54 +23,19 @@ function Footer() {
         <div className="TextBlockA">GIANT PENGUIN</div>
         <div className="IconContaner">
           <div className="GlassBlock">
-            <GiMagnifyingGlass
-              style={{
-                width: "40%",
-                height: "10%",
-                marginLeft: "85px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            />
+            <GiMagnifyingGlass className="GiMagnifyingGlass" />
             <div className="FooterTextBlock">Find the Right Job</div>
           </div>
           <div className="StarBlock">
-            <GiAlliedStar
-              style={{
-                width: "40%",
-                height: "10%",
-                marginLeft: "85px",
-                right: "20px",
-                display: "inline-block",
-              }}
-            />
+            <GiAlliedStar className="GiMagnifyingGlass" />
             <div className="FooterTextBlock">Research Companies</div>
           </div>
           <div className="PrintBlock">
-            <RiPrinterLine
-              style={{
-                width: "40%",
-                height: "10%",
-                marginLeft: "85px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            />
+            <RiPrinterLine className="GiMagnifyingGlass" />
             <div className="FooterTextBlock">Compare Salaries</div>
           </div>
           <div className="DollorBlock">
-            <RiMoneyDollarCircleLine
-              style={{
-                width: "40%",
-                height: "10%",
-                marginLeft: "85px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            />
+            <RiMoneyDollarCircleLine className="GiMagnifyingGlass" />
             <div className="FooterTextBlock">Apply To Jobs</div>
           </div>
         </div>
@@ -281,7 +246,7 @@ function Footer() {
       <div className="FooterBottom">
         <div className="FooterBottomContainer">
           <div className="FooterBottomInformation">
-            <img alt="zz" src="img/LOGO.png" className="logo" />
+            <img alt="zz" src="img/LOGO.png" className="Footerlogo" />
           </div>
           <div className="FooterBottomInformation">
             <strong>GlassDoor</strong> <br /> About/Press <br /> Awards <br />{" "}
@@ -307,32 +272,20 @@ function Footer() {
       <div className="FooterBottomLogoBlock">
         <div className="DownloadAppBlock">
           Download the App &nbsp; &nbsp;
-          <DiApple style={{ width: "40px", height: "40px" }} />
+          <DiApple className="FooterAppLogo" />
           &nbsp;
-          <DiAndroid
-            style={{ width: "40px", height: "40px", marginTop: "5px" }}
-          />
+          <DiAndroid className="FooterAppLogo" />
         </div>
         <div className="TwitterLogoBlock">
-          <FaTwitch
-            style={{ width: "40px", height: "40px", marginTop: "5px" }}
-          />
+          <FaTwitch className="FooterAppLogo" />
           &nbsp;&nbsp;
-          <FaFacebookSquare
-            style={{ width: "40px", height: "40px", marginTop: "5px" }}
-          />
+          <FaFacebookSquare className="FooterAppLogo" />
           &nbsp;&nbsp;
-          <FaTwitterSquare
-            style={{ width: "40px", height: "40px", marginTop: "5px" }}
-          />
+          <FaTwitterSquare className="FooterAppLogo" />
           &nbsp;&nbsp;
-          <FaYoutubeSquare
-            style={{ width: "40px", height: "40px", marginTop: "5px" }}
-          />
+          <FaYoutubeSquare className="FooterAppLogo" />
           &nbsp;&nbsp;
-          <FaInstagram
-            style={{ width: "40px", height: "40px", marginTop: "5px" }}
-          />
+          <FaInstagram className="FooterAppLogo" />
         </div>
         <div className="SelectBlock">
           <input className="FootBottomInput" placeholder="Canada(English)" />

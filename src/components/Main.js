@@ -44,14 +44,7 @@ function Main() {
               className="InputStyle"
               placeholder="Create account with Email"
             />
-            <VscMail
-              style={{
-                width: "30px",
-                height: "30px",
-                position: "absolute",
-                right: "40%",
-              }}
-            />
+            <VscMail className="VscMail" />
           </div>
           <div className="CreateInput">
             <input
@@ -59,14 +52,7 @@ function Main() {
               placeholder="Password"
               type="password"
             />
-            <VscLock
-              style={{
-                width: "30px",
-                height: "30px",
-                position: "absolute",
-                right: "40%",
-              }}
-            />
+            <VscLock className="VscMail" />
           </div>
           <button className="ContinueBtn">Continue with Email</button>
           <div className="TextBlockB">
