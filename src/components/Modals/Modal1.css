@@ -1,46 +1,47 @@
-.modal {
+.modal1 {
   position: fixed;
   top: 600;
-  right: 780px;
+  right: 200px;
   left: 0;
   z-index: 99;
   float: left;
   opacity: 0;
 }
-.modal:hover {
+.modal1:hover {
   position: absolute;
-  top: 40px; /*responsive*/
-  left: 100px; /*responsive*/
+  top: 40px;
+  left: 200px;
   z-index: 99;
   float: left;
   opacity: 1;
   width: 380px;
 }
-.none1 {
-  width: 42px;
+.none {
+  width: 165px;
   height: 20px;
   display: flex;
   position: absolute;
   top: -30px;
-  left: 25px;
-  background: tomato;
+  left: 28px;
+  background: red;
 }
-.modal > section {
+
+.modal1 > section {
   width: 90%;
   max-width: 450px;
   margin: 0 auto;
   border-radius: 0.3rem;
   background-color: #fff;
-  animation: modal-show 0.3s;
+  animation: modal1-show 0.3s;
   overflow: hidden;
 }
-.modal > section > header {
+.modal1 > section > header {
   position: relative;
   padding: 5px 64px 5px 16px;
   font-weight: 700;
   box-sizing: border-box;
 }
-.modal > section > header button {
+.modal1 > section > header button {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -51,21 +52,21 @@
   color: #999;
   background-color: transparent;
 }
-.modal > section > main {
+.modal1 > section > main {
   padding: 16px;
   border-bottom: 1px solid #dee2e6;
   border-top: 1px solid #dee2e6;
   font-size: 13px;
   border: none;
 }
-.modal.openModal {
+.modal1.openModal {
   display: flex;
   align-items: center;
   animation: modal-bg-show 0.3s;
 }
 
 @media (max-width: 900px) {
-  .modal {
+  .modal1 {
     display: none;
     position: fixed;
     top: 0;
@@ -73,5 +74,11 @@
     bottom: 510px;
     left: 0;
     z-index: 99;
+  }
+}
+@media (max-width: 560px) {
+  .modal1 {
+    bottom: 410px;
+    right: 200px;
   }
 }
