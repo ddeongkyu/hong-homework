@@ -49,7 +49,7 @@ function Main() {
           <div className="CreateInput">
             <input
               className="InputStyle"
-              placeholder="<VscLock />"
+              placeholder="Password"
               type="password"
             />
             <VscLock className="VscMail" />

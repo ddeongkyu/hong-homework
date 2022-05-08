@@ -137,7 +137,7 @@
 .NewInformationBlock {
   width: 100%;
   height: 30px;
-  background: thistle;
+  background: #ffdeeb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,8 +164,8 @@
   padding-top: 15px;
 }
 .IconContaner {
-  margin-left: 120px;
-  margin-right: 120px;
+  margin-left: 70px;
+  margin-right: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,7 +192,8 @@
   background: #e9ecef;
 }
 .FooterTextBlock {
-  font-size: 20px;
+  font-size: 19px;
+  margin-left: 25px;
   text-align: center;
   padding-bottom: 15px;
   font-weight: bold;
@@ -231,23 +232,24 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  height: 60px;
+  height: 150px;
   border-bottom: 2px solid #ced4da;
 }
 .DownloadAppBlock {
   width: 23%;
 }
 .TwitterLogoBlock {
-  width: 23%;
+  width: 35%;
   text-align: center;
 }
 .SelectBlock {
   width: 23%;
 }
 .FooterBottomTextContainer {
-  margin-left: 120px;
-  margin-right: 120px;
+  margin-left: 80px;
+  margin-right: 80px;
   display: flex;
+  animation: FooterAnimation 0.3s;
 }
 .FooterBottomTextInformation {
   font-size: 17px;
@@ -279,27 +281,33 @@
   height: 40px;
   margin-top: 5px;
 }
+.FooterLast {
+  margin-bottom: 20px;
+}
+@keyframes FooterAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /*-----------modal-------------*/
 .modal {
-  position: fixed;
-  top: 600;
-  right: 780px;
-  left: 0;
+  position: absolute;
+  top: 40px;
+  left: 30px;
   z-index: 99;
   float: left;
   opacity: 0;
-}
-.modal:hover {
-  position: absolute;
-  top: 40px; /*responsive*/
-  left: 30px; /*responsive*/
-  z-index: 99;
-  float: left;
-  opacity: 1;
   width: 380px;
 }
 .none1 {
   display: inline;
+}
+.none1:hover ~ .modal {
+  opacity: 1;
 }
 .modal > section {
   width: 90%;
@@ -340,30 +348,22 @@
   animation: modal-bg-show 0.3s;
 }
 
-/**/
-
+/*어쩔모달~ 저쩔npm~*/
 .modal1 {
-  position: fixed;
-  top: 600;
-  right: 200px;
-  left: 0;
-  z-index: 99;
-  float: left;
-  opacity: 0;
-}
-.modal1:hover {
   position: absolute;
   top: 40px;
   left: 80px;
   z-index: 99;
   float: left;
-  opacity: 1;
+  opacity: 0;
   width: 380px;
 }
 .none {
   display: inline;
 }
-
+.none:hover ~ .modal1 {
+  opacity: 1;
+}
 .modal1 > section {
   width: 90%;
   max-width: 450px;
@@ -403,28 +403,17 @@
   animation: modal-bg-show 0.3s;
 }
 
-@media (max-width: 900px) {
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 433px;
-    bottom: 510px;
-    left: 0;
-    z-index: 99;
-  }
-}
-
 /*-------------------------RESPONSIVE---------------------------*/
-@media all and (min-width: 768px) and (max-width: 1023px) {
+/*-----767size-----*/
+@media screen and (max-width: 1023px) {
   .App-logo {
     display: none;
   }
   .NewTextBlock {
     font-size: 13px;
     display: inline;
-    padding-top: 50px;
     box-sizing: content-box;
+    padding-top: 3px;
   }
   .leftBlock {
     margin-left: 29vw;
@@ -435,20 +424,20 @@
     width: 100px;
   }
   .VscMail {
-    width: 3vw;
-    height: 3vw;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    right: 36%;
+    right: 33%;
   }
   .FooterTextBlock {
     font-size: 15px;
   }
   .IconContaner {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .GiMagnifyingGlass {
-    width: 30%;
+    width: 25%;
     height: 10%;
     margin-left: 80px;
   }
@@ -457,8 +446,8 @@
   }
 
   .FooterBottomTextContainer {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .FooterBottomInformation {
     font-size: 13px;
@@ -475,20 +464,34 @@
     font-size: 13px;
   }
   .FootBottomInput {
-    width: 200px;
+    width: 160px;
     margin-left: 50px;
   }
-}
-
-@media all and (max-width: 767px) {
-  .App-logo {
-    display: none;
+  .FooterBottomLogoBlock {
+    height: 70px;
   }
-  /* .HeadContainer {
-    display: flex;
-    justify-content: left;
-    align-items: flex-end;
-  } */
+  /*---모달 위치 조정하고 가실께요---*/
+  .modal {
+    position: absolute;
+    top: 45px;
+    left: -10px;
+    z-index: 99;
+    float: left;
+    opacity: 0;
+    width: 380px;
+  }
+  .modal1 {
+    position: absolute;
+    top: 45px;
+    left: 40px;
+    z-index: 99;
+    float: left;
+    opacity: 0;
+    width: 380px;
+  }
+}
+/*-----500size-----*/
+@media screen and (max-width: 766px) {
   .leftBlock {
     margin-left: 20px;
   }
@@ -501,6 +504,10 @@
   .TextLeft {
     font-size: 13px;
     width: 80px;
+  }
+  .MainConainer {
+    background-size: unset;
+    height: 540px;
   }
   .FooterTextBlock {
     font-size: 12px;
@@ -543,5 +550,66 @@
   }
   .DownloadAppBlock {
     width: 30%;
+  }
+  .VscMail {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 24%;
+  }
+  .IconContaner {
+    margin-left: 2px;
+    margin-right: 2px;
+    display: inline-block;
+  }
+  .GlassBlock {
+    width: 40%;
+    height: 40%;
+    display: flex;
+  }
+  .StarBlock {
+    width: 43%;
+    display: flex;
+    height: 43%;
+  }
+  .PrintBlock {
+    width: 40%;
+    height: 40%;
+    display: flex;
+  }
+  .DollorBlock {
+    width: 40%;
+    height: 40%;
+    display: flex;
+  }
+  .FooterTextBlock {
+    font-size: 15px;
+  }
+  .FooterBottomInformation {
+    font-size: 9px;
+  }
+  .Footerlogo {
+    width: 55px;
+    height: 100px;
+  }
+
+  /*---모달 위치 조정하고 가실께요---*/
+  .modal {
+    position: absolute;
+    top: 45px;
+    left: -10px;
+    z-index: 99;
+    float: left;
+    opacity: 0;
+    width: 380px;
+  }
+  .modal1 {
+    position: absolute;
+    top: 45px;
+    left: 90px;
+    z-index: 99;
+    float: left;
+    opacity: 0;
+    width: 380px;
   }
 }

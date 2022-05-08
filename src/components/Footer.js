@@ -236,7 +236,7 @@ function Footer() {
             </div>
             <div className="FooterBottomTextYes">What Does a Geologist do?</div>
             <div className="FooterBottomTextYes">What Does a Carpenter do?</div>
-            <div className="FooterBottomTextYes">
+            <div className="FooterBottomTextYes FooterLast">
               What Does a Cardiologist do?
             </div>
           </div>

@@ -1,10 +1,9 @@
 import React from "react";
-import { VscArchive } from "react-icons/vsc";
 import "../App.css";
 import Modal2 from "./Modal";
 import Modal1 from "./Modal1";
 import { FcPrivacy, FcOk } from "react-icons/fc";
-
+import { RiPrinterLine } from "react-icons/ri";
 function Head() {
   return (
     <div className="HeadContainer">
@@ -70,12 +69,12 @@ function Head() {
       <div className="NewTextBlock">Salaries</div>
       <div className="NewTextBlock">Carrers</div>
       <div className="leftBlock">
-        <div className="TextLeft">For Employers</div>
-        <div className="TextLeft">
-          <VscArchive />
+        <div className="TextLeft ab">For Employers</div>
+        <div className="TextLeft cd">
+          <RiPrinterLine />
           Post Jobs
         </div>
-        <div className="TextLeft">Sign in</div>
+        <div className="TextLeft ef">Sign in</div>
       </div>
     </div>
   );
