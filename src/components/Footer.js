@@ -12,6 +12,121 @@ import {
 } from "react-icons/fa";
 import "../App.css";
 
+const footerBottomClickedTextLeft = [
+  "Data entry",
+  "Customer service",
+  "Copywriter",
+  "Project manager",
+  "Accountant",
+  "Graphic designer",
+  "Editor",
+  "Software developer",
+  "Healthcare",
+  "Cyber security",
+  "Sales",
+  "Transcription",
+  "Pharmacist",
+  "Recruiter",
+  "Attorney",
+  "QA",
+  "Social media",
+  "HR",
+  "Paralegal",
+  "UX",
+  "Data scientist",
+];
+const footerBottomClickedTextCenter = [
+  "Toronto",
+  "Montreal",
+  "Calgary",
+  "Ottawa",
+  "Edmonton",
+  "Mississauga",
+  "Hamilton",
+  "Quebec",
+  "Winnipeg",
+  "Vencouver",
+  "Brampton",
+  "Surrey",
+  "Laval",
+  "London",
+  "Markham",
+  "Victoria",
+  "Vaughan",
+  "Windsor",
+  "Halifax",
+  "Gatineau",
+  "Longueuil",
+  "Burnaby",
+  "Markham",
+  "Kitchener",
+  "Sakatoon",
+  "Richmond",
+];
+const footerBottomClickedTextRight = [
+  "a Neurologist",
+  "an Accountant",
+  "a Project Manager",
+  "a Psychologist",
+  "a Mechanical Engineer",
+  "a Copywriter",
+  "a Graphic Designer",
+  "a Psychiatrist",
+  "a Bookkeeper",
+  "an Actuary",
+  "a Financial Analyst",
+  "an Excutive Producer",
+  "a Software Engineer",
+  "a Computer Engineer",
+  "a Treasurer",
+  "a Lawyer",
+  "a Physician",
+  "an Excutive Assitant",
+  "an Underwriter",
+  "a Data Scientist",
+  "a Registered Nurse",
+  "a Sales Associate",
+  "a Geologist",
+  "a Carpenter",
+  "a Cardiologist",
+];
+const footerGlsssDoorInformation = ["About/Press", "Awards", "Blog"];
+const footerEmployersInformation = [
+  "Get a FREE Employer",
+  "Account",
+  "Employer Center",
+  "Post a Job",
+];
+const footerCommunityInformation = [
+  "Help / Contact Us",
+  "Guidelines",
+  "Tearms of Use",
+  "Privacy Cookies",
+  "Do Not Sell My Personal Information Cookies Consent Tool",
+];
+const footerWorkWithUsInformation = ["Advertisers", "Developer", "Carrers"];
+const footerBottomLogoBlock = [
+  {
+    class: "GiMagnifyingGlass",
+    icon: <GiMagnifyingGlass className="GiMagnifyingGlass" />,
+    text: "Find the Right Job",
+  },
+  {
+    class: "GiAlliedStar",
+    icon: <GiAlliedStar className="GiAlliedStar" />,
+    text: "Research Companies",
+  },
+  {
+    class: "RiPrinterLine",
+    icon: <RiPrinterLine className="RiPrinterLine" />,
+    text: "Compare Salaries",
+  },
+  {
+    class: "RiMoneyDollarCircleLine",
+    icon: <RiMoneyDollarCircleLine className="RiMoneyDollarCircleLine" />,
+    text: "Apply To Jobs",
+  },
+];
 function Footer() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleInformation = () => {
@@ -22,22 +137,12 @@ function Footer() {
       <div className="FooterMainContainer">
         <div className="TextBlockA">GIANT PENGUIN</div>
         <div className="IconContaner">
-          <div className="GlassBlock">
-            <GiMagnifyingGlass className="GiMagnifyingGlass" />
-            <div className="FooterTextBlock">Find the Right Job</div>
-          </div>
-          <div className="StarBlock">
-            <GiAlliedStar className="GiMagnifyingGlass" />
-            <div className="FooterTextBlock">Research Companies</div>
-          </div>
-          <div className="PrintBlock">
-            <RiPrinterLine className="GiMagnifyingGlass" />
-            <div className="FooterTextBlock">Compare Salaries</div>
-          </div>
-          <div className="DollorBlock">
-            <RiMoneyDollarCircleLine className="GiMagnifyingGlass" />
-            <div className="FooterTextBlock">Apply To Jobs</div>
-          </div>
+          {footerBottomLogoBlock.map((item) => (
+            <div className="Whatever">
+              {item.icon}
+              <div className="FooterTextBlock">{item.text}</div>
+            </div>
+          ))}
         </div>
       </div>
       <div className="FooterClick">
@@ -51,6 +156,7 @@ function Footer() {
             />
           ) : (
             <AiOutlineDown
+              className="AiOutLine"
               style={{
                 width: "30px",
                 height: "30px",
@@ -63,182 +169,25 @@ function Footer() {
         <div className="FooterBottomTextContainer">
           <div className="FooterBottomTextInformation">
             <strong>Popular Remote Jobs</strong>
-            <div className="FooterBottomTextYes">
-              Data entry work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Customer service work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Copywriter work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Project manager work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Accountant work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Graphic designer work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Editor work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Software developer work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Healthcare work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Cyber security work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">Sales work from home jobs</div>
-            <div className="FooterBottomTextYes">
-              Transcription work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Pharmacist work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Recruiter work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">
-              Attorney work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">QA work from home jobs</div>
-            <div className="FooterBottomTextYes">
-              Social mdeia work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">HR work from home jobs</div>
-            <div className="FooterBottomTextYes">
-              Paralegal work from home jobs
-            </div>
-            <div className="FooterBottomTextYes">UX work from home jobs</div>
-            <div className="FooterBottomTextYes">
-              Data scientist work from home jobs
-            </div>
+            {footerBottomClickedTextLeft.map((text) => (
+              <div className="footerBottomClickedText">
+                {text} from home jobs
+              </div>
+            ))}
           </div>
           <div className="FooterBottomTextInformation">
             <strong>Popular Part-Time Jobs</strong>
-            <div className="FooterBottomTextYes">Part time jobs in Toronto</div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Montreal
-            </div>
-            <div className="FooterBottomTextYes">Part time jobs in Calgary</div>
-            <div className="FooterBottomTextYes">Part time jobs in Ottawa</div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Edmonton
-            </div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Mississauga
-            </div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Hamilton
-            </div>
-            <div className="FooterBottomTextYes">Part time jobs in Quebec</div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Winnipeg
-            </div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Vancouver
-            </div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Brampton
-            </div>
-            <div className="FooterBottomTextYes">Part time jobs in Surrey</div>
-            <div className="FooterBottomTextYes">Part time jobs in Laval</div>
-            <div className="FooterBottomTextYes">Part time jobs in London</div>
-            <div className="FooterBottomTextYes">Part time jobs in Markham</div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Victoria
-            </div>
-            <div className="FooterBottomTextYes">Part time jobs in Vaughan</div>
-            <div className="FooterBottomTextYes">Part time jobs in Windsor</div>
-            <div className="FooterBottomTextYes">Part time jobs in Halifax</div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Gatineau
-            </div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Longueuil
-            </div>
-            <div className="FooterBottomTextYes">Part time jobs in Burnaby</div>{" "}
-            <div className="FooterBottomTextYes">Part time jobs in Markham</div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Kitchener
-            </div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Sakatoon
-            </div>
-            <div className="FooterBottomTextYes">
-              Part time jobs in Richmond
-            </div>
+            {footerBottomClickedTextCenter.map((text) => (
+              <div className="footerBottomClickedText">Part time in {text}</div>
+            ))}
           </div>
           <div className="FooterBottomTextInformation">
             <strong>Browse Occupations</strong>
-            <div className="FooterBottomTextYes">
-              What Does a Neurologist do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does an Accountant do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Project Manager do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Psychologist do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Mechanical Engineer do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Copywriter do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Graphic Designerdo?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Psychiatrist do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Bookkeeper do?
-            </div>
-            <div className="FooterBottomTextYes">What Does an Actuary do?</div>
-            <div className="FooterBottomTextYes">
-              What Does a Financial Analyst do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does an Excutive Producer do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Software Engineer do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Computer Engineer do?
-            </div>
-            <div className="FooterBottomTextYes">What Does a Treasurer do?</div>
-            <div className="FooterBottomTextYes">What Does a Lawyer do?</div>
-            <div className="FooterBottomTextYes">What Does a Physician do?</div>
-            <div className="FooterBottomTextYes">
-              What Does an Excutive Assistant do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does an Underwriter do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Data Scientist do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Registered Nurse do?
-            </div>
-            <div className="FooterBottomTextYes">
-              What Does a Sales Associate do?
-            </div>
-            <div className="FooterBottomTextYes">What Does a Geologist do?</div>
-            <div className="FooterBottomTextYes">What Does a Carpenter do?</div>
-            <div className="FooterBottomTextYes FooterLast">
-              What Does a Cardiologist do?
-            </div>
+            {footerBottomClickedTextRight.map((text) => (
+              <div className="footerBottomClickedText">
+                What Does {text} do?
+              </div>
+            ))}
           </div>
         </div>
       ) : null}
@@ -249,23 +198,28 @@ function Footer() {
             <img alt="zz" src="img/LOGO.png" className="Footerlogo" />
           </div>
           <div className="FooterBottomInformation">
-            <strong>GlassDoor</strong> <br /> About/Press <br /> Awards <br />{" "}
-            Blog
+            <strong>GlassDoor</strong>
+            {footerGlsssDoorInformation.map((text) => (
+              <div className="footerBottomLogoWhat">{text}</div>
+            ))}
           </div>
           <div className="FooterBottomInformation">
-            <strong>Employers</strong> <br /> Get a FREE Employer <br /> Account{" "}
-            <br /> Employer Center <br /> Post a Job
+            <strong>Employers</strong>
+            {footerEmployersInformation.map((text) => (
+              <div className="footerBottomLogoWhat">{text}</div>
+            ))}
           </div>
           <div className="FooterBottomInformation">
-            <strong>Community</strong> <br /> Help / Contact Us <br />{" "}
-            Guidelines <br />
-            Terms of Use <br /> Privacy Cookies <br /> Privacy Center <br /> Do
-            Not Sell My Personal Information Cookies Consent Tool
+            <strong>Community</strong>
+            {footerCommunityInformation.map((text) => (
+              <div className="footerBottomLogoWhat">{text}</div>
+            ))}
           </div>
           <div className="FooterBottomInformation">
-            <strong>Work With Us</strong> <br /> Advertisers <br /> Developer{" "}
-            <br />
-            Carrers
+            <strong>Work With Us</strong>
+            {footerWorkWithUsInformation.map((text) => (
+              <div className="footerBottomLogoWhat">{text}</div>
+            ))}
           </div>
         </div>
       </div>

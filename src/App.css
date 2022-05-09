@@ -2,6 +2,7 @@
 .App-logo {
   width: 40px;
   height: 30px;
+  cursor: pointer;
 }
 .z-index {
   z-index: -5;
@@ -15,32 +16,36 @@
 
 .HeadContainer {
   height: 45px;
-  width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
-.LogoBlock {
-  width: 40px;
-  display: inline;
-}
-.NewTextBlock {
-  width: 80px;
+.LeftBlock {
+  width: auto;
   font-size: 15px;
-  display: inline;
-  margin-right: 10px;
-  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
 }
-.leftBlock {
-  display: inline-block;
-  margin-left: 380px;
-}
-.TextLeft {
-  width: 130px;
-  font-size: 15px;
-  display: inline;
-  margin-left: 20px;
+.LeftFlex {
+  margin-right: 2vw;
+  cursor: pointer;
 }
 
+.RightBlock {
+  width: auto;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+}
+.TextRight {
+  font-size: 15px;
+  margin-right: 2vw;
+  cursor: pointer;
+}
+.RightPrint {
+  display: flex;
+  align-items: center;
+}
 /* --------MAIN-------- */
 .MainConainer {
   background-image: url("../public/img/MAIN.jpeg");
@@ -53,8 +58,11 @@
 }
 .BtnContainer {
   width: 400px;
-  height: 300px;
-  box-sizing: border-box;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .FacebookBtn {
   background: #3b5998;
@@ -66,9 +74,9 @@
   margin-bottom: 3px;
   border-radius: 5px;
   border: thin solid black;
-  margin-left: 50px;
   margin-top: 5px;
   border: none;
+  cursor: pointer;
 }
 .GoogleBtn {
   display: block;
@@ -82,8 +90,8 @@
   font-size: 16px;
   line-height: 30px;
   padding: 3px 8px;
-  margin-left: 50px;
   margin-top: 7px;
+  cursor: pointer;
 }
 .TextBlock {
   font-size: 18px;
@@ -102,7 +110,9 @@
   color: #e64980;
 }
 .CreateInput {
+  position: relative;
   width: 300px;
+  height: 37.5px;
   background: white;
   color: #868e96;
   border-radius: 5px;
@@ -110,10 +120,9 @@
   white-space: nowrap;
   font-size: 16px;
   line-height: 30px;
-  padding: 3px 8px;
-  box-sizing: border-box;
   margin-bottom: 10px;
-  margin-left: 50px;
+  display: flex;
+  align-items: center;
 }
 .ContinueBtn {
   width: 200px;
@@ -122,17 +131,17 @@
   align-items: center;
   background: #4dabf7;
   color: white;
-  margin-left: 100px;
-  box-sizing: border-box;
   padding: 5px;
   font-size: 16px;
   border: none;
   margin-top: 17px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .InputStyle {
   border: none;
   width: 200px;
+  padding-left: 20px;
 }
 .NewInformationBlock {
   width: 100%;
@@ -148,7 +157,7 @@
   width: 30px;
   height: 30px;
   position: absolute;
-  right: 37%;
+  left: 80%;
 }
 /*--------FOOTER--------*/
 .FooterMainContainer {
@@ -164,36 +173,46 @@
   padding-top: 15px;
 }
 .IconContaner {
-  margin-left: 70px;
-  margin-right: 70px;
   display: flex;
+  flex-direction: row;
+  background: #e9ecef;
+}
+.Whatever {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-bottom: 15px;
 }
-.GlassBlock {
+.GiMagnifyingGlass {
   width: 25%;
-  float: left;
-  background: #e9ecef;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.StarBlock {
+.GiAlliedStar {
   width: 25%;
-  float: left;
-  background: #e9ecef;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.DollorBlock {
+.RiMoneyDollarCircleLine {
   width: 25%;
-  float: left;
-  background: #e9ecef;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.PrintBlock {
+.RiPrinterLine {
   width: 25%;
-  float: left;
-  background: #e9ecef;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .FooterTextBlock {
   font-size: 19px;
-  margin-left: 25px;
   text-align: center;
   padding-bottom: 15px;
   font-weight: bold;
@@ -204,7 +223,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 30px;
+}
+.AiOutLine:hover {
+  transform: rotate(180deg);
+  animation: rotation 0.15s linear;
+  cursor: pointer;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
 }
 .FooterBottom {
   width: 100%;
@@ -226,29 +258,40 @@
   margin-top: 40px;
   line-height: 160%;
 }
+.footerBottomLogoWhat {
+  cursor: pointer;
+}
 .FooterBottomLogoBlock {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
   height: 150px;
   border-bottom: 2px solid #ced4da;
 }
 .DownloadAppBlock {
   width: 23%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .TwitterLogoBlock {
   width: 35%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .SelectBlock {
   width: 23%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .FooterBottomTextContainer {
   margin-left: 80px;
   margin-right: 80px;
   display: flex;
+  padding-bottom: 15px;
   animation: FooterAnimation 0.3s;
 }
 .FooterBottomTextInformation {
@@ -256,19 +299,15 @@
   width: 36%;
   float: left;
 }
-.FooterBottomTextYes {
+.footerBottomClickedText {
   line-height: 160%;
   font-size: 17px;
+  cursor: pointer;
 }
 .FootBottomInput {
   margin-top: 10px;
   width: 250px;
   height: 20px;
-}
-.GiMagnifyingGlass {
-  width: 40%;
-  height: 10%;
-  margin-left: 85px;
 }
 .Footerlogo {
   height: 180px;
@@ -280,34 +319,35 @@
   width: 40px;
   height: 40px;
   margin-top: 5px;
+  cursor: pointer;
 }
 .FooterLast {
   margin-bottom: 20px;
 }
 @keyframes FooterAnimation {
-  from {
+  0% {
     opacity: 0;
+    transform: translate3d(0, -5%, 0);
   }
   to {
     opacity: 1;
+    transform: translateZ(0);
   }
 }
 
 /*-----------modal-------------*/
-.modal {
+/* .modal {
   position: absolute;
+  background: skyblue;
   top: 40px;
   left: 30px;
   z-index: 99;
   float: left;
-  opacity: 0;
   width: 380px;
-}
-.none1 {
-  display: inline;
-}
-.none1:hover ~ .modal {
-  opacity: 1;
+  display: none;
+} */
+.modal {
+  cursor: default;
 }
 .modal > section {
   width: 90%;
@@ -349,20 +389,17 @@
 }
 
 /*어쩔모달~ 저쩔npm~*/
-.modal1 {
+/* .modal1 {
   position: absolute;
   top: 40px;
   left: 80px;
   z-index: 99;
   float: left;
-  opacity: 0;
   width: 380px;
-}
-.none {
-  display: inline;
-}
-.none:hover ~ .modal1 {
-  opacity: 1;
+  display: none;
+} */
+.modal1 {
+  cursor: default;
 }
 .modal1 > section {
   width: 90%;
@@ -402,44 +439,76 @@
   align-items: center;
   animation: modal-bg-show 0.3s;
 }
+.dropbtn {
+  font-size: 16px;
+  border: none;
+}
 
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 450px;
+  left: -20px;
+  z-index: 1;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  width: 450px;
+  z-index: 1;
+}
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  top: 15px;
+  left: -15px;
+}
+
+.dropdown:hover .dropdown-content2 {
+  display: flex;
+}
+
+/**/
+/**/
+/**/
+/**/
+/**/
+
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
 /*-------------------------RESPONSIVE---------------------------*/
 /*-----767size-----*/
 @media screen and (max-width: 1023px) {
   .App-logo {
     display: none;
   }
-  .NewTextBlock {
-    font-size: 13px;
-    display: inline;
-    box-sizing: content-box;
-    padding-top: 3px;
-  }
-  .leftBlock {
-    margin-left: 29vw;
-  }
-  .TextLeft {
-    font-size: 13px;
-    margin-left: 20px;
-    width: 100px;
-  }
-  .VscMail {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 33%;
-  }
   .FooterTextBlock {
     font-size: 15px;
-  }
-  .IconContaner {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  .GiMagnifyingGlass {
-    width: 25%;
-    height: 10%;
-    margin-left: 80px;
   }
   .FooterBottomTextInformation {
     margin-left: 25px;
@@ -465,13 +534,12 @@
   }
   .FootBottomInput {
     width: 160px;
-    margin-left: 50px;
   }
   .FooterBottomLogoBlock {
     height: 70px;
   }
   /*---모달 위치 조정하고 가실께요---*/
-  .modal {
+  /* .modal {
     position: absolute;
     top: 45px;
     left: -10px;
@@ -488,7 +556,7 @@
     float: left;
     opacity: 0;
     width: 380px;
-  }
+  } */
 }
 /*-----500size-----*/
 @media screen and (max-width: 766px) {
@@ -512,10 +580,15 @@
   .FooterTextBlock {
     font-size: 12px;
   }
-  .GiMagnifyingGlass {
-    width: 30%;
-    height: 10%;
-    margin-left: 50px;
+  .IconContaner {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .Whatever {
+    width: 50%;
+    flex-wrap: wrap;
+    align-items: center;
   }
   .FooterBottomTextContainer {
     margin-left: 20px;
@@ -551,39 +624,8 @@
   .DownloadAppBlock {
     width: 30%;
   }
-  .VscMail {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 24%;
-  }
-  .IconContaner {
-    margin-left: 2px;
-    margin-right: 2px;
-    display: inline-block;
-  }
-  .GlassBlock {
-    width: 40%;
-    height: 40%;
-    display: flex;
-  }
-  .StarBlock {
-    width: 43%;
-    display: flex;
-    height: 43%;
-  }
-  .PrintBlock {
-    width: 40%;
-    height: 40%;
-    display: flex;
-  }
-  .DollorBlock {
-    width: 40%;
-    height: 40%;
-    display: flex;
-  }
   .FooterTextBlock {
-    font-size: 15px;
+    font-size: 13px;
   }
   .FooterBottomInformation {
     font-size: 9px;
@@ -594,7 +636,7 @@
   }
 
   /*---모달 위치 조정하고 가실께요---*/
-  .modal {
+  /* .modal {
     position: absolute;
     top: 45px;
     left: -10px;
@@ -611,5 +653,5 @@
     float: left;
     opacity: 0;
     width: 380px;
-  }
+  } */
 }

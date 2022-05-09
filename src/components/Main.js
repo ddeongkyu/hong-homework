@@ -57,7 +57,8 @@ function Main() {
           <button className="ContinueBtn">Continue with Email</button>
           <div className="TextBlockB">
             <strong>
-              Are you Hiring? <strong>Post Jobs</strong>
+              Are you Hiring?{" "}
+              <strong style={{ cursor: "pointer" }}>Post Jobs</strong>
             </strong>
           </div>
         </div>
@@ -65,7 +66,9 @@ function Main() {
       <div className="NewInformationBlock">
         <strong style={{ color: "red" }}>NEW!&nbsp;</strong> What are the Best
         Places in Work 2022?
-        <strong style={{ color: "blue" }}>&nbsp;See Winners!</strong>
+        <strong style={{ color: "blue", cursor: "pointer" }}>
+          &nbsp;See Winners!
+        </strong>
       </div>
     </>
   );
