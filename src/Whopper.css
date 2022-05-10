@@ -1,0 +1,61 @@
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: underline;
+}
+nav a {
+  display: flex;
+}
+
+aside {
+  font-size: 16px;
+  transition: all 300ms ease-in-out;
+}
+
+nav {
+  background: #333;
+  color: #fff;
+  height: 100%;
+  width: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  opacity: 0.98;
+  z-index: 99;
+  transition: 0.7s all ease-in-out;
+}
+.pengsoo {
+  transition: 2s;
+  width: auto;
+}
+
+#close {
+  font-size: 169px;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+}
+
+.shirimp {
+  transition: all 300ms ease-in-out;
+}
+
+.navlist {
+  padding-left: 8vw;
+  padding-right: 8vw;
+}
+.navlist li {
+  margin-bottom: 20px;
+  transition: all 300ms ease-in-out;
+}
+.navlist li a {
+  color: #fff;
+  font-size: 16px;
+  transition: all 300ms ease-in-out;
+}
+.navlist li a:hover {
+  color: #ffd8a8;
+}

@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import Modal2 from "./Modal";
 import Modal1 from "./Modal1";
 import { RiPrinterLine } from "react-icons/ri";
+import { FcMenu } from "react-icons/fc";
+import Whopper from "./Whopper";
 function Head() {
+  const [on, setOn] = useState(false);
+  const onMenuClick = () => {
+    setOn(!on);
+  };
   return (
     <div className="HeadContainer">
       {/* LEFT BLOCK */}
@@ -42,31 +48,21 @@ function Head() {
         </div>
         <div className="TextRight">Sign in</div>
       </div>
-      {/* <Modal2 header="Find the Right Job">
-                Millions of jobs. Search by whatmatters to you and find the
-                <br /> one that's right for you.
-                <FcOk
-                  style={{
-                    display: "flex",
-                    float: "right",
-                    height: "50px",
-                    width: "50px",
-                  }}
-                />
-                <button
-                  style={{
-                    display: "block",
-                    background: "white",
-                    marginTop: "5px",
-                    borderRadius: "3px",
-                    padding: "8px",
-                    border: "0.5px solid #74c0fc",
-                    color: "#74c0fc",
-                  }}
-                >
-                  Start Using Glassdoor
-                </button>
-              </Modal2> */}
+      {/* 와퍼 메뉴 */}
+      <aside className={on ? "shirimp" : ""}>
+        <a href="#" onClick={onMenuClick}>
+          <FcMenu
+            size="40"
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              marginRight: "20px",
+            }}
+          />
+        </a>
+      </aside>
+      {on && <Whopper openClass="open" on={on} setOn={setOn} />}
     </div>
   );
 }

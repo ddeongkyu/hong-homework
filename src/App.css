@@ -336,16 +336,6 @@
 }
 
 /*-----------modal-------------*/
-/* .modal {
-  position: absolute;
-  background: skyblue;
-  top: 40px;
-  left: 30px;
-  z-index: 99;
-  float: left;
-  width: 380px;
-  display: none;
-} */
 .modal {
   cursor: default;
 }
@@ -389,15 +379,6 @@
 }
 
 /*어쩔모달~ 저쩔npm~*/
-/* .modal1 {
-  position: absolute;
-  top: 40px;
-  left: 80px;
-  z-index: 99;
-  float: left;
-  width: 380px;
-  display: none;
-} */
 .modal1 {
   cursor: default;
 }
@@ -452,7 +433,8 @@
   display: none;
   position: absolute;
   width: 450px;
-  left: -20px;
+  left: -30px;
+  top: 20px;
   z-index: 1;
 }
 
@@ -463,19 +445,21 @@
 .dropdown:hover .dropdown-content {
   display: flex;
 }
+/* 
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  z-index: 1;
+} */
 
 .dropdown-content2 {
   display: none;
   position: absolute;
   width: 450px;
-  z-index: 1;
-}
-
-.dropdown-content2 {
-  display: none;
-  position: absolute;
-  top: 15px;
-  left: -15px;
+  top: 20px;
+  left: -30px;
 }
 
 .dropdown:hover .dropdown-content2 {
@@ -483,7 +467,10 @@
 }
 
 /**/
-/**/
+/*햄버거*/
+aside {
+  display: none;
+}
 /**/
 /**/
 /**/
@@ -634,24 +621,15 @@
     width: 55px;
     height: 100px;
   }
+}
 
-  /*---모달 위치 조정하고 가실께요---*/
-  /* .modal {
-    position: absolute;
-    top: 45px;
-    left: -10px;
-    z-index: 99;
-    float: left;
-    opacity: 0;
-    width: 380px;
+/*----562size 에서 rightBlock 안보이고 햄버거(빅맥)나오게---*/
+
+@media screen and (max-width: 562px) {
+  .RightBlock {
+    display: none;
   }
-  .modal1 {
-    position: absolute;
-    top: 45px;
-    left: 90px;
-    z-index: 99;
-    float: left;
-    opacity: 0;
-    width: 380px;
-  } */
+  aside {
+    display: flex;
+  }
 }
