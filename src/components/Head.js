@@ -5,6 +5,7 @@ import Modal1 from "./Modal1";
 import { RiPrinterLine } from "react-icons/ri";
 import { FcMenu } from "react-icons/fc";
 import Whopper from "./Whopper";
+import WhopperDelicious from "../WhopperDelicious";
 function Head() {
   const [on, setOn] = useState(false);
   const onMenuClick = () => {
@@ -50,19 +51,26 @@ function Head() {
       </div>
       {/* 와퍼 메뉴 */}
       <aside className={on ? "shirimp" : ""}>
-        <a href="#" onClick={onMenuClick}>
-          <FcMenu
-            size="40"
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-              marginRight: "20px",
-            }}
-          />
-        </a>
+        {!on ? (
+          <a href="#" onClick={onMenuClick}>
+            <FcMenu
+              size="40"
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                marginRight: "20px",
+              }}
+            />
+          </a>
+        ) : null}
       </aside>
-      {on && <Whopper openClass="open" on={on} setOn={setOn} />}
+      {on && (
+        <>
+          <WhopperDelicious on={on} setOn={setOn} onClick={onMenuClick} />
+          <Whopper openClass="open" on={on} setOn={setOn}></Whopper>
+        </>
+      )}
     </div>
   );
 }

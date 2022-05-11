@@ -471,6 +471,13 @@
 aside {
   display: none;
 }
+.burger:not(.RightBlock):not(.HeadContainer) {
+  z-index: 100;
+  float: left;
+  width: 800px;
+  height: 100%;
+  background: tomato;
+}
 /**/
 /**/
 /**/
