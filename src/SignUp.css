@@ -1,0 +1,67 @@
+.SignUpContainer {
+  width: 333px;
+  height: 100%;
+  margin: 20px;
+  color: #adb5bd;
+  font-weight: bold;
+}
+.inputWrappingDiv {
+  text-align: center;
+}
+.textBlock {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.phoneNot {
+  font-size: 14px;
+}
+.textStyle {
+  font-size: 11px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.AgreeTerms {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 8px;
+  border-top: 1px solid #adb5bd;
+  padding-top: 7px;
+}
+.inputStyle {
+  width: 100%;
+  background: #e9ecef;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.inputStyle::placeholder {
+  color: #adb5bd;
+  font-size: 13px;
+}
+.BsStyle {
+  font-size: 11px;
+  /* display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+.BsStyleInnerText {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+.SigninBtnStyle {
+  margin-top: 15px;
+  font-size: 12px;
+  width: 100%;
+  height: 30px;
+  border-radius: 50px;
+  border: none;
+  color: white;
+}

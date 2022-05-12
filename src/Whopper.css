@@ -25,7 +25,18 @@ nav {
   right: 0;
   opacity: 0.8;
   z-index: 99;
-  transition: 0.7s all ease-in-out;
+  animation-name: whopper;
+  animation-duration: 0.5s;
+  animation-duration: leaner;
+  animation-fill-mode: forwards;
+}
+@keyframes whopper {
+  0% {
+    right: 10%;
+  }
+  100% {
+    right: 0;
+  }
 }
 .pengsoo {
   transition: 2s;

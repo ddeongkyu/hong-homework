@@ -3,8 +3,12 @@ import { VscMail, VscLock } from "react-icons/vsc";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import "../App.css";
-
+import { useNavigate } from "react-router-dom";
 function Main() {
+  let navigate = useNavigate();
+  function onMoveSignUp(e) {
+    navigate("SignUp");
+  }
   return (
     <>
       <div className="MainConainer">
@@ -60,6 +64,9 @@ function Main() {
               Are you Hiring?{" "}
               <strong style={{ cursor: "pointer" }}>Post Jobs</strong>
             </strong>
+          </div>
+          <div onClick={onMoveSignUp}>
+            <button className="signupBtn"> Sign Up!</button>
           </div>
         </div>
       </div>

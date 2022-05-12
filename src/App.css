@@ -159,6 +159,17 @@
   position: absolute;
   left: 80%;
 }
+.signupBtn {
+  background: #c3fae8;
+  border-radius: 15px;
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  color: #868e96;
+}
+.signupBtn:active {
+  background: #38d9a9;
+}
 /*--------FOOTER--------*/
 .FooterMainContainer {
   width: 100%;
