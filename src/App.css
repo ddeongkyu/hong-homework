@@ -166,6 +166,7 @@
   height: 50px;
   font-size: 20px;
   color: #868e96;
+  cursor: pointer;
 }
 .signupBtn:active {
   background: #38d9a9;

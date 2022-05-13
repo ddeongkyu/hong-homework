@@ -1,5 +1,13 @@
+.AllContainer {
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .SignUpContainer {
-  width: 333px;
+  width: 444px;
   height: 100%;
   margin: 20px;
   color: #adb5bd;
@@ -15,9 +23,13 @@
 }
 .phoneNot {
   font-size: 14px;
+  text-align: center;
+}
+.phoneNot:hover {
+  color: #96f2d7;
 }
 .textStyle {
-  font-size: 11px;
+  font-size: 13px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -33,20 +45,16 @@
   background: #e9ecef;
   border: none;
   border-radius: 5px;
-  height: 30px;
+  height: 40px;
   padding-left: 15px;
   box-sizing: border-box;
 }
 .inputStyle::placeholder {
   color: #adb5bd;
-  font-size: 13px;
+  font-size: 16px;
 }
 .BsStyle {
   font-size: 11px;
-  /* display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  align-items: center; */
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
@@ -56,12 +64,38 @@
   display: flex;
   align-items: center;
 }
+.SignUpInputRight {
+  border: 2px solid #dbe4ff;
+  background: #d0ebff;
+}
+.SignUpInputWrong {
+  border: 2px solid #ffa8a8;
+  background: #ffc9c9;
+}
+.PasswordRight {
+  background: #d0ebff;
+}
+.PasswordWrong {
+  background: #ffc9c9;
+}
+.AgreeChecked {
+  color: #4dabf7;
+  text-decoration: underline;
+}
 .SigninBtnStyle {
   margin-top: 15px;
   font-size: 12px;
+  font-weight: bold;
   width: 100%;
   height: 30px;
   border-radius: 50px;
   border: none;
-  color: white;
+  color: #495057;
+  cursor: pointer;
+}
+.SigninBtnStyle:hover {
+  background: #c3fae8;
+}
+.SigninBtnStyle:active {
+  background: #96f2d7;
 }
