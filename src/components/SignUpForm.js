@@ -1,18 +1,35 @@
 import React, { useState } from "react";
 import "../SignUp.css";
 import { BsFillExclamationTriangleFill } from "react-icons/bs";
-
+import { useNavigate } from "react-router-dom";
 const SignUpForm = () => {
+  //NAVIGATION//
+  let navigate = useNavigate();
+  function onMoveMain() {
+    navigate("/");
+  }
   /* NAME INPUT */
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const onChangeFirstName = (e) => {
     const { value } = e.target;
     setFirstName(value);
+    if (value === "") {
+      setStyleFirstName(0);
+    } else {
+      setStyleFirstName(1);
+      setWarningFirst(0);
+    }
   };
   const onChangeLastName = (e) => {
     const { value } = e.target;
     setLastName(value);
+    if (value === "") {
+      setStyleLastName(0);
+    } else {
+      setStyleLastName(1);
+      setWarningLast(0);
+    }
   };
   /* INPUT SETTER FUNCTION*/
   const [email, setEmail] = useState("");
@@ -21,27 +38,18 @@ const SignUpForm = () => {
   const [password, setPassword] = useState("");
 
   /* STYLE SETTER FUNCTION */
+  const [styleFirstName, setStyleFirstName] = useState(0);
+  const [styleLastName, setStyleLastName] = useState(0);
   const [style, setStyle] = useState(0);
   const [styleAgain, setStyleAgain] = useState(0);
   const [stylePhoneNumber, setStylePhoneNumber] = useState(0);
+  const [weakStyle, setWeakStyle] = useState(0);
 
   const [styleCharacter8, setStyleCharacter8] = useState(0);
   const [styleSpecial, setStyleSpecial] = useState(0);
   const [styleOneNumber, setStyleOneNumber] = useState(0);
   const [styleMixCase, setStyleMixCase] = useState(0);
-
-  /* VALIDATE SETTER FUNCTION */
-  const [validate, setValidate] = useState([
-    { email: false, emailAgain: false, phone: false, password: false },
-  ]);
-  const [passwordValidate, setPasswordValidate] = useState([
-    {
-      characters8: false,
-      specialCharacter: false,
-      oneNumber: false,
-      mixUpperLowercase: false,
-    },
-  ]);
+  const [passwordValidationText, SetPasswordValidationText] = useState("WEAK");
 
   /* Mail Validate */
   const onChange = (e) => {
@@ -53,30 +61,18 @@ const SignUpForm = () => {
     } else if (!regMail.test(email)) {
       return setStyle(1);
     } else if (regMail.test(email)) {
-      return (
-        validate.map((email) => (email.email = true)) +
-        setValidate(validate) +
-        console.log(validate) +
-        setStyle(2)
-      );
+      return setStyle(2);
     }
   };
   /* Mail Again Validate*/
   const onChangeAgain = (e) => {
     const { value } = e.target;
     setConfirmEmail(value);
-    console.log(value);
     if (value === "") {
       setStyleAgain(0);
     } else if (email === value) {
-      return (
-        validate.map((emailAgain) => (emailAgain.emailAgain = true)) +
-        setValidate(validate) +
-        console.log(validate) +
-        setStyleAgain(2)
-      );
+      return setStyleAgain(2);
     } else {
-      console.log("WHATEVER");
       setStyleAgain(1);
     }
   };
@@ -84,18 +80,12 @@ const SignUpForm = () => {
   const onChangePhoneNumber = (e) => {
     const { value } = e.target;
     setPhoneNumber(value);
-    console.log(value);
     const regPhone = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/;
     if (value === "") {
       setStylePhoneNumber(0);
     } else if (regPhone.test(value)) {
-      console.log("RIGHT!");
       setStylePhoneNumber(2);
-      validate.map((phone) => (phone.phone = true));
-      setValidate(validate);
-      console.log(validate);
     } else if (!regPhone.test(value)) {
-      console.log("WRONG!");
       setStylePhoneNumber(1);
     }
   };
@@ -111,28 +101,16 @@ const SignUpForm = () => {
       setStyleCharacter8(0);
     } else if (regLegth.test(value)) {
       setStyleCharacter8(2);
-      passwordValidate.map((characters8) => (characters8.characters8 = true));
-      setPasswordValidate(passwordValidate);
     } else if (!regLegth.test(value)) {
       setStyleCharacter8(1);
-      passwordValidate.map((characters8) => (characters8.characters8 = false));
-      setPasswordValidate(passwordValidate);
     }
     // one Special Validate
     const regSpecial = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/;
     if (value === "") {
       setStyleSpecial(0);
     } else if (regSpecial.test(value)) {
-      passwordValidate.map(
-        (specialCharacter) => (specialCharacter.specialCharacter = true)
-      );
-      setPasswordValidate(passwordValidate);
       setStyleSpecial(2);
     } else if (!regSpecial.test(value)) {
-      passwordValidate.map(
-        (specialCharacter) => (specialCharacter.specialCharacter = false)
-      );
-      setPasswordValidate(passwordValidate);
       setStyleSpecial(1);
     }
     // one Number Validate
@@ -140,12 +118,8 @@ const SignUpForm = () => {
     if (value === "") {
       setStyleOneNumber(0);
     } else if (regNumber.test(value)) {
-      passwordValidate.map((oneNumber) => (oneNumber.oneNumber = true));
-      setPasswordValidate(passwordValidate);
       setStyleOneNumber(2);
     } else if (!regNumber.test(value)) {
-      passwordValidate.map((oneNumber) => (oneNumber.oneNumber = false));
-      setPasswordValidate(passwordValidate);
       setStyleOneNumber(1);
     }
     //Mixed upper & lowercase Validate
@@ -153,17 +127,59 @@ const SignUpForm = () => {
     if (value === "") {
       setStyleMixCase(0);
     } else if (regMixed.test(value)) {
-      passwordValidate.map(
-        (mixUpperLowercase) => (mixUpperLowercase.mixUpperLowercase = true)
-      );
-      setPasswordValidate(passwordValidate);
       setStyleMixCase(2);
     } else if (!regMixed.test(value)) {
-      passwordValidate.map(
-        (mixUpperLowercase) => (mixUpperLowercase.mixUpperLowercase = false)
-      );
-      setPasswordValidate(passwordValidate);
       setStyleMixCase(1);
+    }
+    //0~1개 파란색: WEAK (0), 2~3파란색: Hmm...(1) , 4파란색: SAFE(2)
+
+    if (
+      styleCharacter8 === 2 &&
+      styleOneNumber === 2 &&
+      styleSpecial === 2 &&
+      styleMixCase === 2
+    ) {
+      setWeakStyle(2);
+      SetPasswordValidationText("SAFE");
+    } else if (
+      (styleCharacter8 === 2 && styleOneNumber === 2) ||
+      (styleCharacter8 === 2 && styleSpecial === 2) ||
+      (styleCharacter8 === 2 && styleMixCase === 2) ||
+      (styleOneNumber === 2 && styleSpecial === 2) ||
+      (styleOneNumber === 2 && styleMixCase === 2) ||
+      (styleSpecial === 2 && styleMixCase === 2) ||
+      // COSM -> COS, COM, OSM, CSM
+      (styleCharacter8 === 2 && styleOneNumber === 2 && styleSpecial === 2) ||
+      (styleCharacter8 === 2 && styleOneNumber === 2 && styleMixCase === 2) ||
+      (styleOneNumber === 2 && styleSpecial === 2 && styleMixCase === 2) ||
+      (styleMixCase === 2 && styleCharacter8 === 2 && styleSpecial === 2)
+    ) {
+      setWeakStyle(1);
+      SetPasswordValidationText("Hmm....");
+    } else if (styleOneNumber === 0) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (styleCharacter8 === 0) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (styleMixCase === 0) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (styleSpecial === 0) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (styleOneNumber === 1) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (styleCharacter8 === 1) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (styleMixCase === 1) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (styleSpecial === 1) {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
     }
   };
 
@@ -171,8 +187,39 @@ const SignUpForm = () => {
   const doYouAgreeClick = (e) => {
     setDoYouAgree(!doYouAgree);
   };
+  // WARNING
+  const [warningFirst, setWarningFirst] = useState(0);
+  const [warningLast, setWarningLast] = useState(0);
+  const [warningEmail, setWarnigEmail] = useState(0);
+  const [warningEmailAgain, setWarningEmailAgain] = useState(0);
+  const [warningPassword, setWarningPasswrod] = useState(0);
 
   const SignUpFormSubmit = () => {
+    if (firstName === "") {
+      setWarningFirst(1);
+    }
+    if (lastName === "") {
+      setWarningLast(1);
+    }
+    if (style === 0 || style === 1) {
+      setWarnigEmail(1);
+    }
+    if (styleAgain === 0 || styleAgain === 1) {
+      setWarningEmailAgain(1);
+    }
+    if (
+      password === "" ||
+      styleCharacter8 === 0 ||
+      styleCharacter8 === 1 ||
+      styleSpecial === 0 ||
+      styleSpecial === 1 ||
+      styleOneNumber === 0 ||
+      styleOneNumber === 1 ||
+      styleMixCase === 0 ||
+      styleMixCase === 1
+    ) {
+      setWarningPasswrod(1);
+    }
     if (firstName === "") {
       alert("First Name을 입력해 주세요!");
     } else if (lastName === "") {
@@ -195,8 +242,6 @@ const SignUpForm = () => {
       alert("비밀번호에는 최소한 1개의 숫자가 들어가야 합니다!");
     } else if (styleMixCase === 0 || styleMixCase === 1) {
       alert("비밀번호는 영어 대/소문자를 반드시 섞어주셔야 합니다!!");
-    } else if (doYouAgree === false) {
-      alert("약관과 개인정보 정책에 동의해주세요!");
     } else if (
       firstName !== "" &&
       lastName !== "" &&
@@ -215,6 +260,8 @@ const SignUpForm = () => {
       setConfirmEmail("");
       setPhoneNumber("");
       setPassword("");
+      setStyleFirstName(0);
+      setStyleLastName(0);
       setStyle(0);
       setStyleAgain(0);
       setStylePhoneNumber(0);
@@ -222,6 +269,11 @@ const SignUpForm = () => {
       setStyleSpecial(0);
       setStyleOneNumber(0);
       setStyleMixCase(0);
+      setDoYouAgree(false);
+      window.localStorage.setItem(
+        email,
+        JSON.stringify({ lastName, firstName, phoneNumber, password })
+      );
       alert(firstName + "님 회원가입을 축하드려요!!");
     }
   };
@@ -231,27 +283,44 @@ const SignUpForm = () => {
       <div className="SignUpContainer">
         <div className="textBlock">
           <div>
-            Already a Customer?&nbsp;&nbsp;
+            Already a Customer?&nbsp;
             <strong style={{ color: "blue" }}>Sign in!</strong>
           </div>
         </div>
         <div className="inputWrappingDiv">
           <input
-            className="inputStyle"
             placeholder="First Name"
             style={{ marginBottom: "10px" }}
             value={firstName}
             onChange={onChangeFirstName}
+            className={
+              styleFirstName === 0
+                ? "inputStyle"
+                : "inputStyle SignUpInputRight"
+            }
           />
+        </div>
+        <div className={warningFirst === 0 ? "nameValidate" : "nameValidateOk"}>
+          WRITE YOUR FIRST NAME!
         </div>
         <div className="inputWrappingDiv">
           <input
-            className="inputStyle"
             placeholder="Last Name"
             value={lastName}
             onChange={onChangeLastName}
+            className={
+              styleLastName === 0 ? "inputStyle" : "inputStyle SignUpInputRight"
+            }
           />
         </div>
+        <div
+          className={
+            warningLast === 0 ? "nameValidateLast" : "nameValidateLastOk"
+          }
+        >
+          WRITE YOUR LAST NAME!
+        </div>
+
         <div>
           <div className="textStyle">EMAIL</div>
         </div>
@@ -269,6 +338,19 @@ const SignUpForm = () => {
             onChange={onChange}
           />
         </div>
+        <div
+          className={
+            warningEmail === 0
+              ? "pleaseConfirm"
+              : warningEmail === 1 && style === 2
+              ? "pleaseConfirm"
+              : warningEmail === 1
+              ? "pleaseConfirmPlease"
+              : "pleaseConfirm"
+          }
+        >
+          PLEASE CHECK YOUR EMAIL!
+        </div>
         <div>
           <div className="textStyle">ENTER YOUR EMAIL AGAIN</div>
         </div>
@@ -285,6 +367,19 @@ const SignUpForm = () => {
             value={confirmEmail}
             onChange={onChangeAgain}
           />
+        </div>
+        <div
+          className={
+            warningEmailAgain === 0
+              ? "pleaseConfirm"
+              : warningEmailAgain === 1 && styleAgain === 2
+              ? "pleaseConfirm"
+              : warningEmailAgain === 1
+              ? "pleaseConfirmPlease"
+              : "pleaseConfirm"
+          }
+        >
+          PLEASE CONFIRM YOUR EMAIL!
         </div>
         <div>
           <div className="textStyle">PHONE NUMBER</div>
@@ -307,16 +402,57 @@ const SignUpForm = () => {
           <span>Don't have a phone number? Leave it empty!</span>
         </div>
         <div>
-          <div className="textStyle">CREATE A PASSWORD</div>
+          <div className="textStyle">
+            CREATE A PASSWORD
+            <span
+              className={
+                weakStyle === 2
+                  ? "weakSpanStyle weakSpanStyleSafe"
+                  : weakStyle === 1
+                  ? "weakSpanStyle weakSpanStyleHmm"
+                  : weakStyle === 0
+                  ? "weakSpanStyle"
+                  : ""
+              }
+            >
+              {passwordValidationText}
+            </span>
+          </div>
         </div>
         <div className="inputWrappingDiv">
           <input
-            className="inputStyle"
-            placeholder="************"
+            className={
+              password === ""
+                ? "inputStyle"
+                : styleSpecial === 2 &&
+                  styleOneNumber === 2 &&
+                  styleCharacter8 === 2 &&
+                  styleMixCase === 2
+                ? "inputStyle SignUpInputRight"
+                : "inputStyle SignUpInputWrong"
+            }
+            placeholder="********"
             type="password"
             onChange={onChangePassword}
             value={password}
           />
+        </div>
+        <div
+          className={
+            warningPassword === 0
+              ? "pleaseConfirm"
+              : warningPassword === 1 &&
+                styleSpecial === 2 &&
+                styleOneNumber === 2 &&
+                styleCharacter8 === 2 &&
+                styleMixCase === 2
+              ? "pleaseConfirm"
+              : warningPassword === 1
+              ? "pleaseConfirmPlease"
+              : "pleaseConfirm"
+          }
+        >
+          PLEASE CHECK YOUR PASSWORD!
         </div>
         <div className="BsStyle">
           <div
@@ -369,7 +505,11 @@ const SignUpForm = () => {
           </div>
         </div>
         <div className={doYouAgree ? "AgreeTerms AgreeChecked" : "AgreeTerms"}>
-          <input type="checkbox" onClick={() => doYouAgreeClick()} />
+          <input
+            checked={doYouAgree ? true : false}
+            type="checkbox"
+            onChange={() => doYouAgreeClick()}
+          />
           Agree to the &nbsp;
           <div
             style={{
@@ -391,8 +531,20 @@ const SignUpForm = () => {
             Privacy policy
           </div>
         </div>
-        <button className="SigninBtnStyle" onClick={SignUpFormSubmit}>
+        <button
+          disabled={doYouAgree ? false : true}
+          className={
+            doYouAgree
+              ? "SigninBtnStyle SigninBtnStyleActive"
+              : "SigninBtnStyle"
+          }
+          onClick={SignUpFormSubmit}
+        >
           CREATE AN ACCOUNT
+        </button>
+        <div style={{ textAlign: "center" }}>or</div>
+        <button onClick={onMoveMain} className="GoMainBtnStyle">
+          GO MAIN
         </button>
       </div>
     </div>

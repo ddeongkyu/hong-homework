@@ -194,31 +194,31 @@ function Footer() {
 
       <div className="FooterBottom">
         <div className="FooterBottomContainer">
-          <div className="FooterBottomInformation">
+          <div className="FooterBottomInformation a360_1">
             <img alt="zz" src="img/LOGO.png" className="Footerlogo" />
           </div>
           <div className="FooterBottomInformation">
-            <strong>GlassDoor</strong>
+            <strong className="a360_2">GlassDoor</strong>
             {footerGlsssDoorInformation.map((text) => (
-              <div className="footerBottomLogoWhat">{text}</div>
+              <div className="footerBottomLogoWhat a360_2">{text}</div>
             ))}
           </div>
           <div className="FooterBottomInformation">
-            <strong>Employers</strong>
+            <strong className="a360_3">Employers</strong>
             {footerEmployersInformation.map((text) => (
-              <div className="footerBottomLogoWhat">{text}</div>
+              <div className="footerBottomLogoWhat a360_3">{text}</div>
             ))}
           </div>
           <div className="FooterBottomInformation">
-            <strong>Community</strong>
+            <strong className="a360_4">Community</strong>
             {footerCommunityInformation.map((text) => (
-              <div className="footerBottomLogoWhat">{text}</div>
+              <div className="footerBottomLogoWhat a360_4">{text}</div>
             ))}
           </div>
           <div className="FooterBottomInformation">
-            <strong>Work With Us</strong>
+            <strong className="a360_5">Work With Us</strong>
             {footerWorkWithUsInformation.map((text) => (
-              <div className="footerBottomLogoWhat">{text}</div>
+              <div className="footerBottomLogoWhat a360_5">{text}</div>
             ))}
           </div>
         </div>

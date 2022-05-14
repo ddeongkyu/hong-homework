@@ -49,7 +49,7 @@
 /* --------MAIN-------- */
 .MainConainer {
   background-image: url("../public/img/MAIN.jpeg");
-  background-size: cover;
+  background-size: contain;
   height: 700px;
   width: 100%;
   display: flex;
@@ -580,7 +580,7 @@ aside {
     width: 80px;
   }
   .MainConainer {
-    background-size: unset;
+    background-size: cover;
     height: 540px;
   }
   .FooterTextBlock {
@@ -641,7 +641,49 @@ aside {
     height: 100px;
   }
 }
-
+@media screen and (max-width: 500px) {
+  .NewInformationBlock {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .NewInformationBlock {
+    font-size: 11px;
+  }
+  .FooterBottom {
+    height: 250px;
+  }
+  .FooterBottomContainer {
+    height: 250px;
+  }
+  .FooterBottomTextInformation {
+    font-size: 13px;
+    width: 100%;
+  }
+  .footerBottomClickedText {
+    font-size: 8px;
+  }
+  .FooterBottomInformation {
+    font-size: 8px;
+    width: 100%;
+  }
+  .Footerlogo {
+    width: 100%;
+  }
+  .a360_2 {
+    text-align: left;
+  }
+}
+@media screen and (max-width: 338px) {
+  .NewInformationBlock {
+    font-size: 9px;
+  }
+}
+@media screen and (max-width: 314px) {
+  .NewInformationBlock {
+    font-size: 7px;
+  }
+}
 /*----562size 에서 rightBlock 안보이고 햄버거(빅맥)나오게---*/
 
 @media screen and (max-width: 562px) {
