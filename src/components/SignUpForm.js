@@ -8,250 +8,365 @@ const SignUpForm = () => {
   function onMoveMain() {
     navigate("/");
   }
-  /* NAME INPUT */
+  //FUNDAMENTAL SETTER FUNCTION  //
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    confirmEmail: "",
+    phoneNumber: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    confirmEmail: "",
+    phoneNumber: "",
+    password: {
+      Number: "",
+      Mixed: "",
+      Special: "",
+      eightLength: "",
+    },
+  });
+  /* SETTER FUNCTION*/
+  const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [weakStyle, setWeakStyle] = useState(0);
+  const [passwordValidationText, SetPasswordValidationText] = useState("WEAK");
+  const [warningFirst, setWarningFirst] = useState({
+    firstNameWarning: "",
+  });
+  const [warningLast, setWarningLast] = useState({
+    lastNameWarning: "",
+  });
+  const [warningEmail, setWarnigEmail] = useState({
+    emailWarning: "",
+  });
+  const [warningEmailAgain, setWarningEmailAgain] = useState({
+    confirmEmailWarning: "",
+  });
+  const [warningPassword, setWarningPasswrod] = useState({
+    passwordWarning: "",
+  });
+
+  /* NEW NAME INPUT*/
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const onChangeFirstName = (e) => {
     const { value } = e.target;
     setFirstName(value);
     if (value === "") {
-      setStyleFirstName(0);
+      errors.firstName = "empty";
+      setErrors(errors);
     } else {
-      setStyleFirstName(1);
-      setWarningFirst(0);
+      errors.firstName = "fine";
+      setErrors(errors);
+      warningFirst.firstNameWarning = "fine";
+      setWarningFirst(warningFirst);
     }
   };
   const onChangeLastName = (e) => {
     const { value } = e.target;
     setLastName(value);
     if (value === "") {
-      setStyleLastName(0);
+      errors.lastName = "empty";
+      setErrors(errors);
     } else {
-      setStyleLastName(1);
-      setWarningLast(0);
+      errors.lastName = "fine";
+      setErrors(errors);
+      warningLast.lastNameWarning = "fine";
+      setWarningLast(warningLast);
     }
   };
-  /* INPUT SETTER FUNCTION*/
-  const [email, setEmail] = useState("");
-  const [confirmEmail, setConfirmEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
 
-  /* STYLE SETTER FUNCTION */
-  const [styleFirstName, setStyleFirstName] = useState(0);
-  const [styleLastName, setStyleLastName] = useState(0);
-  const [style, setStyle] = useState(0);
-  const [styleAgain, setStyleAgain] = useState(0);
-  const [stylePhoneNumber, setStylePhoneNumber] = useState(0);
-  const [weakStyle, setWeakStyle] = useState(0);
-
-  const [styleCharacter8, setStyleCharacter8] = useState(0);
-  const [styleSpecial, setStyleSpecial] = useState(0);
-  const [styleOneNumber, setStyleOneNumber] = useState(0);
-  const [styleMixCase, setStyleMixCase] = useState(0);
-  const [passwordValidationText, SetPasswordValidationText] = useState("WEAK");
-
-  /* Mail Validate */
+  /* NEW Mail Validate */
   const onChange = (e) => {
     setEmail(e.target.value);
     const regMail =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (e.target.value === "") {
-      setStyle(0);
+      errors.email = "empty";
+      setErrors(errors);
     } else if (!regMail.test(email)) {
-      return setStyle(1);
+      errors.email = "invalid";
+      setErrors(errors);
+      warningEmail.emailWarning = "fine";
+      setWarnigEmail(warningEmail);
     } else if (regMail.test(email)) {
-      return setStyle(2);
+      errors.email = "fine";
+      setErrors(errors);
+      warningEmail.emailWarning = "fine";
+      setWarnigEmail(warningEmail);
     }
   };
-  /* Mail Again Validate*/
+  /* NEW Mail Again Validate*/
   const onChangeAgain = (e) => {
     const { value } = e.target;
     setConfirmEmail(value);
     if (value === "") {
-      setStyleAgain(0);
+      errors.confirmEmail = "empty";
+      setErrors(errors);
     } else if (email === value) {
-      return setStyleAgain(2);
+      errors.confirmEmail = "fine";
+      setErrors(errors);
+      warningEmailAgain.confirmEmailWarning = "fine";
+      setWarningEmailAgain(warningEmailAgain);
     } else {
-      setStyleAgain(1);
+      errors.confirmEmail = "invalid";
+      setErrors(errors);
+      warningEmailAgain.confirmEmailWarning = "fine";
+      setWarningEmailAgain(warningEmailAgain);
     }
   };
-  /* Phone number Validate */
+
+  /* NEW Phone number Validate */
   const onChangePhoneNumber = (e) => {
     const { value } = e.target;
     setPhoneNumber(value);
     const regPhone = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/;
     if (value === "") {
-      setStylePhoneNumber(0);
+      errors.phoneNumber = "empty";
+      setErrors(errors);
     } else if (regPhone.test(value)) {
-      setStylePhoneNumber(2);
+      errors.phoneNumber = "fine";
+      setErrors(errors);
     } else if (!regPhone.test(value)) {
-      setStylePhoneNumber(1);
+      errors.phoneNumber = "invalid";
+      setErrors(errors);
     }
   };
-
-  // PASSWORD VALIDATE //
+  // NEW PASSWORD VALIDATE //
   const onChangePassword = (e) => {
     const { value } = e.target;
     setPassword(value);
-
-    //8Length Upper Validate
+    //NEW 8Length Upper Validate
     const regLegth = /^.{8,99}$/;
     if (value === "") {
-      setStyleCharacter8(0);
+      errors.password.eightLength = "empty";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     } else if (regLegth.test(value)) {
-      setStyleCharacter8(2);
+      errors.password.eightLength = "fine";
+      setErrors(errors);
     } else if (!regLegth.test(value)) {
-      setStyleCharacter8(1);
+      errors.password.eightLength = "invalid";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     }
-    // one Special Validate
+    // NEW Special Validate
     const regSpecial = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/;
     if (value === "") {
-      setStyleSpecial(0);
+      errors.password.Special = "empty";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     } else if (regSpecial.test(value)) {
-      setStyleSpecial(2);
+      errors.password.Special = "fine";
+      setErrors(errors);
     } else if (!regSpecial.test(value)) {
-      setStyleSpecial(1);
+      errors.password.Special = "invalid";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     }
-    // one Number Validate
+    // NEW one Number Validate
     const regNumber = /(?=.*?[0-9])/;
     if (value === "") {
-      setStyleOneNumber(0);
+      errors.password.Number = "empty";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     } else if (regNumber.test(value)) {
-      setStyleOneNumber(2);
+      errors.password.Number = "fine";
+      setErrors(errors);
     } else if (!regNumber.test(value)) {
-      setStyleOneNumber(1);
+      errors.password.Number = "invalid";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     }
-    //Mixed upper & lowercase Validate
+    // NEW Mixed upper & lowercase Validate
     const regMixed = /(?=.*?[a-z])(?=.*?[A-Z])/;
     if (value === "") {
-      setStyleMixCase(0);
+      errors.password.Mixed = "empty";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     } else if (regMixed.test(value)) {
-      setStyleMixCase(2);
+      errors.password.Mixed = "fine";
+      setErrors(errors);
     } else if (!regMixed.test(value)) {
-      setStyleMixCase(1);
+      errors.password.Mixed = "invalid";
+      setErrors(errors);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     }
     //0~1개 파란색: WEAK (0), 2~3파란색: Hmm...(1) , 4파란색: SAFE(2)
-
     if (
-      styleCharacter8 === 2 &&
-      styleOneNumber === 2 &&
-      styleSpecial === 2 &&
-      styleMixCase === 2
+      errors.password.Mixed === "fine" &&
+      errors.password.Special === "fine" &&
+      errors.password.eightLength === "fine" &&
+      errors.password.Number === "fine"
     ) {
+      warningPassword.passwordWarning = "fine";
+    }
+    if (warningPassword.passwordWarning === "fine") {
       setWeakStyle(2);
       SetPasswordValidationText("SAFE");
     } else if (
-      (styleCharacter8 === 2 && styleOneNumber === 2) ||
-      (styleCharacter8 === 2 && styleSpecial === 2) ||
-      (styleCharacter8 === 2 && styleMixCase === 2) ||
-      (styleOneNumber === 2 && styleSpecial === 2) ||
-      (styleOneNumber === 2 && styleMixCase === 2) ||
-      (styleSpecial === 2 && styleMixCase === 2) ||
+      (errors.password.Number === "fine" &&
+        errors.password.eightLength === "fine") ||
+      (errors.password.eightLength === "fine" &&
+        errors.password.Special === "fine") ||
+      (errors.password.eightLength === "fine" &&
+        errors.password.Mixed === "fine") ||
+      (errors.password.Number === "fine" &&
+        errors.password.Special === "fine") ||
+      (errors.password.Number === "fine" && errors.password.Mixed === "fine") ||
+      (errors.password.Special === "fine" &&
+        errors.password.Mixed === "fine") ||
       // COSM -> COS, COM, OSM, CSM
-      (styleCharacter8 === 2 && styleOneNumber === 2 && styleSpecial === 2) ||
-      (styleCharacter8 === 2 && styleOneNumber === 2 && styleMixCase === 2) ||
-      (styleOneNumber === 2 && styleSpecial === 2 && styleMixCase === 2) ||
-      (styleMixCase === 2 && styleCharacter8 === 2 && styleSpecial === 2)
+      (errors.password.eightLength === "fine" &&
+        errors.password.Number === "fine" &&
+        errors.password.Special === "fine") ||
+      (errors.password.eightLength === "fine" &&
+        errors.password.Number === "fine" &&
+        errors.password.Mixed === "fine") ||
+      (errors.password.Number === "fine" &&
+        errors.password.Special === "fine" &&
+        errors.password.Mixed === "fine") ||
+      (errors.password.Mixed === "fine" &&
+        errors.password.eightLength === "fine" &&
+        errors.password.Special === "fine")
     ) {
       setWeakStyle(1);
       SetPasswordValidationText("Hmm....");
-    } else if (styleOneNumber === 0) {
+    } else if (errors.password.Number === "") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
-    } else if (styleCharacter8 === 0) {
+    } else if (errors.password.eightLength === "") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
-    } else if (styleMixCase === 0) {
+    } else if (errors.password.Mixed === "") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
-    } else if (styleSpecial === 0) {
+    } else if (errors.password.Special === "") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
-    } else if (styleOneNumber === 1) {
+    } else if (errors.password.Number === "invalid") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
-    } else if (styleCharacter8 === 1) {
+    } else if (errors.password.eightLength === "invalid") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
-    } else if (styleMixCase === 1) {
+    } else if (errors.password.Mixed === "invalid") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
-    } else if (styleSpecial === 1) {
+    } else if (errors.password.Special === "invalid") {
+      setWeakStyle(0);
+      SetPasswordValidationText("WEAK");
+    } else if (password === "") {
       setWeakStyle(0);
       SetPasswordValidationText("WEAK");
     }
   };
 
   const [doYouAgree, setDoYouAgree] = useState(false);
-  const doYouAgreeClick = (e) => {
+  const doYouAgreeClick = () => {
     setDoYouAgree(!doYouAgree);
   };
-  // WARNING
-  const [warningFirst, setWarningFirst] = useState(0);
-  const [warningLast, setWarningLast] = useState(0);
-  const [warningEmail, setWarnigEmail] = useState(0);
-  const [warningEmailAgain, setWarningEmailAgain] = useState(0);
-  const [warningPassword, setWarningPasswrod] = useState(0);
-
-  const SignUpFormSubmit = () => {
+  const onSignUpFormSubmit = () => {
     if (firstName === "") {
-      setWarningFirst(1);
+      warningFirst.firstNameWarning = "invalid";
+      setWarningFirst(warningFirst);
     }
     if (lastName === "") {
-      setWarningLast(1);
+      warningLast.lastNameWarning = "invalid";
+      setWarningLast(warningLast);
     }
-    if (style === 0 || style === 1) {
-      setWarnigEmail(1);
+    if (
+      email === "" ||
+      errors.email === "empty" ||
+      errors.email === "invalid"
+    ) {
+      warningEmail.emailWarning = "invalid";
+      setWarnigEmail(warningEmail);
     }
-    if (styleAgain === 0 || styleAgain === 1) {
-      setWarningEmailAgain(1);
+    if (
+      confirmEmail === "" ||
+      errors.confirmEmail === "empty" ||
+      errors.confirmEmail === "invalid"
+    ) {
+      warningEmailAgain.confirmEmailWarning = "invalid";
+      setWarningEmailAgain(warningEmailAgain);
     }
     if (
       password === "" ||
-      styleCharacter8 === 0 ||
-      styleCharacter8 === 1 ||
-      styleSpecial === 0 ||
-      styleSpecial === 1 ||
-      styleOneNumber === 0 ||
-      styleOneNumber === 1 ||
-      styleMixCase === 0 ||
-      styleMixCase === 1
+      errors.password.eightLength === "invalid" ||
+      errors.password.eightLength === "empty" ||
+      errors.password.Mixed === "invalid" ||
+      errors.password.Mixed === "empty" ||
+      errors.password.Number === "invalid" ||
+      errors.password.Number === "empty" ||
+      errors.password.Special === "invalid" ||
+      errors.password.Special === "empty"
     ) {
-      setWarningPasswrod(1);
+      warningPassword.passwordWarning = "invalid";
+      setWarningPasswrod(warningPassword);
     }
+
     if (firstName === "") {
       alert("First Name을 입력해 주세요!");
     } else if (lastName === "") {
       alert("Last Name을 입력해 주세요!");
-    } else if (style === 0) {
+    } else if (errors.email === "empty" || errors.email === "") {
       alert("Email을 입력해 주세요!");
-    } else if (style === 1) {
+    } else if (errors.email === "invalid") {
       alert("Email의 양식을 확인해 주세요!");
-    } else if (styleAgain === 0 || styleAgain === 1) {
+    } else if (errors.confirmEmail === "empty" || errors.confirmEmail === "") {
       alert("Email을 다시 한 번 정확하게 입력해 주세요!");
-    } else if (stylePhoneNumber === 1) {
+    } else if (errors.phoneNumber === "invalid") {
       alert("휴대폰 번호 입력 양식을 확인해 주세요!");
-    } else if (styleCharacter8 === 0) {
+    } else if (password === "") {
       alert("비밀번호를 입력해 주세요!");
-    } else if (styleCharacter8 === 1) {
+    } else if (
+      errors.password.eightLength === "invalid" ||
+      errors.password.eightLength === "empty"
+    ) {
       alert("비밀번호는 최소 8자리 입니다!!");
-    } else if (styleSpecial === 0 || styleSpecial === 1) {
+    } else if (
+      errors.password.Special === "invalid" ||
+      errors.password.Special === "empty"
+    ) {
       alert("비밀번호에는 최소한 1개의 특수문자가 들어가야 합니다!");
-    } else if (styleOneNumber === 0 || styleOneNumber === 1) {
+    } else if (
+      errors.password.Number === "invalid" ||
+      errors.password.Number === "empty"
+    ) {
       alert("비밀번호에는 최소한 1개의 숫자가 들어가야 합니다!");
-    } else if (styleMixCase === 0 || styleMixCase === 1) {
+    } else if (
+      errors.password.Mixed === "invalid" ||
+      errors.password.Mixed === "empty"
+    ) {
       alert("비밀번호는 영어 대/소문자를 반드시 섞어주셔야 합니다!!");
     } else if (
       firstName !== "" &&
       lastName !== "" &&
-      style === 2 &&
-      styleAgain === 2 &&
-      (stylePhoneNumber === 2 || stylePhoneNumber === 0) &&
-      styleCharacter8 === 2 &&
-      styleSpecial === 2 &&
-      styleOneNumber === 2 &&
-      styleMixCase === 2 &&
+      errors.email === "fine" &&
+      errors.confirmEmail === "fine" &&
+      (errors.phoneNumber === "fine" ||
+        errors.phoneNumber === "" ||
+        errors.phoneNumber === "empty") &&
+      errors.password.eightLength === "fine" &&
+      errors.password.Mixed === "fine" &&
+      errors.password.Number === "fine" &&
+      errors.password.Special === "fine" &&
       doYouAgree === true
     ) {
       setFirstName("");
@@ -259,21 +374,27 @@ const SignUpForm = () => {
       setEmail("");
       setConfirmEmail("");
       setPhoneNumber("");
+      form.firstName = firstName;
+      form.lastName = lastName;
+      form.email = email;
+      form.confirmEmail = confirmEmail;
+      form.phoneNumber = phoneNumber;
+      form.password = password;
+      setForm(form);
+      console.log(form);
+      errors.firstName = "";
+      errors.lastName = "";
+      errors.email = "";
+      errors.confirmEmail = "";
+      errors.phoneNumber = "";
+      errors.password.Special = "";
+      errors.password.Mixed = "";
+      errors.password.Number = "";
+      errors.password.eightLength = "";
       setPassword("");
-      setStyleFirstName(0);
-      setStyleLastName(0);
-      setStyle(0);
-      setStyleAgain(0);
-      setStylePhoneNumber(0);
-      setStyleCharacter8(0);
-      setStyleSpecial(0);
-      setStyleOneNumber(0);
-      setStyleMixCase(0);
+      setErrors(errors);
       setDoYouAgree(false);
-      window.localStorage.setItem(
-        email,
-        JSON.stringify({ lastName, firstName, phoneNumber, password })
-      );
+      window.localStorage.setItem(email, JSON.stringify(form));
       alert(firstName + "님 회원가입을 축하드려요!!");
     }
   };
@@ -294,13 +415,20 @@ const SignUpForm = () => {
             value={firstName}
             onChange={onChangeFirstName}
             className={
-              styleFirstName === 0
+              errors.firstName === "" || errors.firstName === "empty"
                 ? "inputStyle"
                 : "inputStyle SignUpInputRight"
             }
           />
         </div>
-        <div className={warningFirst === 0 ? "nameValidate" : "nameValidateOk"}>
+        <div
+          className={
+            warningFirst.firstNameWarning === "" ||
+            warningFirst.firstNameWarning === "fine"
+              ? "nameValidate"
+              : "nameValidateOk"
+          }
+        >
           WRITE YOUR FIRST NAME!
         </div>
         <div className="inputWrappingDiv">
@@ -309,13 +437,18 @@ const SignUpForm = () => {
             value={lastName}
             onChange={onChangeLastName}
             className={
-              styleLastName === 0 ? "inputStyle" : "inputStyle SignUpInputRight"
+              errors.lastName === "empty" || errors.lastName === ""
+                ? "inputStyle"
+                : "inputStyle SignUpInputRight"
             }
           />
         </div>
         <div
           className={
-            warningLast === 0 ? "nameValidateLast" : "nameValidateLastOk"
+            warningLast.lastNameWarning === "" ||
+            warningLast.lastNameWarning === "fine"
+              ? "nameValidate"
+              : "nameValidateOk"
           }
         >
           WRITE YOUR LAST NAME!
@@ -327,9 +460,9 @@ const SignUpForm = () => {
         <div className="inputWrappingDiv">
           <input
             className={
-              style === 0
+              errors.email === "" || errors.email === "empty"
                 ? "inputStyle"
-                : style === 1
+                : errors.email === "invalid"
                 ? "inputStyle SignUpInputWrong"
                 : "inputStyle SignUpInputRight"
             }
@@ -340,13 +473,10 @@ const SignUpForm = () => {
         </div>
         <div
           className={
-            warningEmail === 0
+            warningEmail.emailWarning === "" ||
+            warningEmail.emailWarning === "fine"
               ? "pleaseConfirm"
-              : warningEmail === 1 && style === 2
-              ? "pleaseConfirm"
-              : warningEmail === 1
-              ? "pleaseConfirmPlease"
-              : "pleaseConfirm"
+              : "pleaseConfirmPlease"
           }
         >
           PLEASE CHECK YOUR EMAIL!
@@ -357,9 +487,9 @@ const SignUpForm = () => {
         <div className="inputWrappingDiv">
           <input
             className={
-              styleAgain === 0
+              errors.confirmEmail === "" || errors.confirmEmail === "empty"
                 ? "inputStyle"
-                : styleAgain === 1
+                : errors.confirmEmail === "invalid"
                 ? "inputStyle SignUpInputWrong"
                 : "inputStyle SignUpInputRight"
             }
@@ -370,13 +500,10 @@ const SignUpForm = () => {
         </div>
         <div
           className={
-            warningEmailAgain === 0
+            warningEmailAgain.confirmEmailWarning === "" ||
+            warningEmailAgain.confirmEmailWarning === "fine"
               ? "pleaseConfirm"
-              : warningEmailAgain === 1 && styleAgain === 2
-              ? "pleaseConfirm"
-              : warningEmailAgain === 1
-              ? "pleaseConfirmPlease"
-              : "pleaseConfirm"
+              : "pleaseConfirmPlease"
           }
         >
           PLEASE CONFIRM YOUR EMAIL!
@@ -387,9 +514,9 @@ const SignUpForm = () => {
         <div className="inputWrappingDiv">
           <input
             className={
-              stylePhoneNumber === 0
+              errors.phoneNumber === "" || errors.phoneNumber === "empty"
                 ? "inputStyle"
-                : stylePhoneNumber === 1
+                : errors.phoneNumber === "invalid"
                 ? "inputStyle SignUpInputWrong"
                 : "inputStyle SignUpInputRight"
             }
@@ -424,10 +551,10 @@ const SignUpForm = () => {
             className={
               password === ""
                 ? "inputStyle"
-                : styleSpecial === 2 &&
-                  styleOneNumber === 2 &&
-                  styleCharacter8 === 2 &&
-                  styleMixCase === 2
+                : errors.password.Mixed === "fine" &&
+                  errors.password.Number === "fine" &&
+                  errors.password.eightLength === "fine" &&
+                  errors.password.Special === "fine"
                 ? "inputStyle SignUpInputRight"
                 : "inputStyle SignUpInputWrong"
             }
@@ -439,17 +566,9 @@ const SignUpForm = () => {
         </div>
         <div
           className={
-            warningPassword === 0
+            warningPassword.passwordWarning === ""
               ? "pleaseConfirm"
-              : warningPassword === 1 &&
-                styleSpecial === 2 &&
-                styleOneNumber === 2 &&
-                styleCharacter8 === 2 &&
-                styleMixCase === 2
-              ? "pleaseConfirm"
-              : warningPassword === 1
-              ? "pleaseConfirmPlease"
-              : "pleaseConfirm"
+              : "pleaseConfirmPlease"
           }
         >
           PLEASE CHECK YOUR PASSWORD!
@@ -457,9 +576,10 @@ const SignUpForm = () => {
         <div className="BsStyle">
           <div
             className={
-              styleCharacter8 === 0
+              errors.password.eightLength === "empty" ||
+              errors.password.eightLength === ""
                 ? "BsStyleInnerText"
-                : styleCharacter8 === 1
+                : errors.password.eightLength === "invalid"
                 ? "BsStyleInnerText PasswordWrong"
                 : "BsStyleInnerText PasswordRight"
             }
@@ -469,9 +589,10 @@ const SignUpForm = () => {
           </div>
           <div
             className={
-              styleSpecial === 0
+              errors.password.Special === "" ||
+              errors.password.Special === "empty"
                 ? "BsStyleInnerText"
-                : styleSpecial === 1
+                : errors.password.Special === "invalid"
                 ? "BsStyleInnerText PasswordWrong"
                 : "BsStyleInnerText PasswordRight"
             }
@@ -481,9 +602,10 @@ const SignUpForm = () => {
           </div>
           <div
             className={
-              styleOneNumber === 0
+              errors.password.Number === "" ||
+              errors.password.Number === "empty"
                 ? "BsStyleInnerText"
-                : styleOneNumber === 1
+                : errors.password.Number === "invalid"
                 ? "BsStyleInnerText PasswordWrong"
                 : "BsStyleInnerText PasswordRight"
             }
@@ -493,9 +615,9 @@ const SignUpForm = () => {
           </div>
           <div
             className={
-              styleMixCase === 0
+              errors.password.Mixed === "empty" || errors.password.Mixed === ""
                 ? "BsStyleInnerText"
-                : styleMixCase === 1
+                : errors.password.Mixed === "invalid"
                 ? "BsStyleInnerText PasswordWrong"
                 : "BsStyleInnerText PasswordRight"
             }
@@ -538,7 +660,7 @@ const SignUpForm = () => {
               ? "SigninBtnStyle SigninBtnStyleActive"
               : "SigninBtnStyle"
           }
-          onClick={SignUpFormSubmit}
+          onClick={onSignUpFormSubmit}
         >
           CREATE AN ACCOUNT
         </button>
