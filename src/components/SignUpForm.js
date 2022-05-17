@@ -23,125 +23,216 @@ const SignUpForm = () => {
     email: "",
     confirmEmail: "",
     phoneNumber: "",
+    password: "",
     passwordNumberError: "",
     passwordMixedError: "",
     passwordSpecialError: "",
     passwordEightLengthError: "",
   });
+  const [doYouAgree, setDoYouAgree] = useState(false);
 
   /* NAME INPUT*/
   const onChangeFirstName = (e) => {
     const { value } = e.target;
-    setForm({ ...form, firstName: value });
-    if (value !== "") {
-      setErrors({ ...errors, firstName: "" });
+    setForm((prevForms) => {
+      return {
+        ...prevForms,
+        firstName: value,
+      };
+    });
+    if (value) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          firstName: "",
+        };
+      });
     }
   };
 
   const onChangeLastName = (e) => {
     const { value } = e.target;
-    setForm({ ...form, lastName: value });
-    if (value !== "") {
-      setErrors({ ...errors, lastName: "" });
+    setForm((prevForms) => {
+      return {
+        ...prevForms,
+        lastName: value,
+      };
+    });
+    if (value) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          lastName: value,
+        };
+      });
     }
   };
 
   /* Mail Validate */
   const onChangeEmail = (e) => {
     const { value } = e.target;
-    setForm({ ...form, email: value });
+    setForm((prevForms) => {
+      return {
+        ...prevForms,
+        email: value,
+      };
+    });
     const regMail =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!regMail.test(value)) {
-      setErrors({ ...errors, email: "invalid" });
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          email: "invalid",
+        };
+      });
     } else if (regMail.test(value)) {
-      setErrors({ ...errors, email: "" });
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          email: "fine",
+        };
+      });
     }
   };
   /* Mail Again Validate*/
   const onChangeAgain = (e) => {
     const { value } = e.target;
-    setForm({ ...form, confirmEmail: value });
+    setForm((prevForms) => {
+      return {
+        ...prevForms,
+        confirmEmail: value,
+      };
+    });
     if (value !== form.email) {
-      setErrors({ ...errors, confirmEmail: "invalid" });
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          confirmEmail: "invalid",
+        };
+      });
     } else if (value === form.email) {
-      setErrors({ ...errors, confirmEmail: "" });
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          confirmEmail: "fine",
+        };
+      });
     }
   };
 
   /* Phone number Validate */
   const onChangePhoneNumber = (e) => {
     const { value } = e.target;
-    setForm({ ...form, phoneNumber: value });
+    setForm((prevForms) => {
+      return {
+        ...prevForms,
+        phoneNumber: value,
+      };
+    });
     const regPhone = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/;
     if (!regPhone.test(value)) {
-      setErrors({ ...errors, phoneNumber: "invalid" });
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          phoneNumber: "invalid",
+        };
+      });
     } else if (regPhone.test(value)) {
-      setErrors({ ...errors, phoneNumber: "" });
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          phoneNumber: "",
+        };
+      });
     }
   };
 
   // PASSWORD VALIDATE //
   const onChangePassword = (e) => {
     const { value } = e.target;
-    setForm({ ...form, password: value });
+    setForm((prevForms) => {
+      return {
+        ...prevForms,
+        password: value,
+      };
+    });
+    const passwrodError = {};
     // 8Length Upper Validate
     const regLegth = /^.{8,99}$/;
     if (value === "") {
-      setErrors({ ...errors, passwordEightLengthError: "" });
+      passwrodError.passwordEightLengthError = "";
     } else if (regLegth.test(value)) {
-      setErrors({ ...errors, passwordEightLengthError: "" });
+      passwrodError.passwordEightLengthError = "fine";
     } else if (!regLegth.test(value)) {
-      setErrors({ ...errors, passwordEightLengthError: "invalid" });
+      passwrodError.passwordEightLengthError = "invalid";
     }
     // Special Validate
     const regSpecial = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/;
-    if (!regSpecial.test(value)) {
-      setErrors({ ...errors, passwordSpecialError: "invalid" });
+    if (value === "") {
+      passwrodError.passwordSpecialError = "";
+    } else if (!regSpecial.test(value)) {
+      passwrodError.passwordSpecialError = "invalid";
     } else if (regSpecial.test(value)) {
-      setErrors({ ...errors, passwordSpecialError: "" });
+      passwrodError.passwordSpecialError = "fine";
     }
     // Mixed upper & lowercase Validate
     const regMixed = /(?=.*?[a-z])(?=.*?[A-Z])/;
-    if (!regMixed.test(value)) {
-      setErrors({ ...errors, passwordMixedError: "invalid" });
+    if (value === "") {
+      passwrodError.passwordMixedError = "";
+    } else if (!regMixed.test(value)) {
+      passwrodError.passwordMixedError = "invalid";
     } else if (regMixed.test(value)) {
-      setErrors({ ...errors, passwordMixedError: "" });
+      passwrodError.passwordMixedError = "fine";
     }
 
     // one Number Validate
     const regNumber = /(?=.*?[0-9])/;
-    if (!regNumber.test(value)) {
-      setErrors({ ...errors, passwordNumberError: "invalid" });
+    if (value === "") {
+      passwrodError.passwordNumberError = "";
+    } else if (!regNumber.test(value)) {
+      passwrodError.passwordNumberError = "invalid";
     } else if (regNumber.test(value)) {
-      setErrors({ ...errors, passwordNumberError: "" });
+      passwrodError.passwordNumberError = "fine";
     }
-    //0~1개 파란색: WEAK (0), 2~3파란색: Hmm...(1) , 4파란색: SAFE(2)
-    //밑에서 작성
+    setErrors((prevErrors) => {
+      return { ...prevErrors, ...passwrodError, password: "" };
+    });
   };
 
-  const [doYouAgree, setDoYouAgree] = useState(false);
   const doYouAgreeClick = () => {
     setDoYouAgree(!doYouAgree);
   };
   const onSignUpFormSubmit = (e) => {
     e.preventDefault();
+    const submitError = {};
     if (form.firstName === "") {
-      setErrors({ ...errors, firstName: "empty" });
+      submitError.firstName = "empty";
     }
     if (form.lastName === "") {
-      setErrors({ ...errors, lastName: "empty" });
+      submitError.lastName = "empty";
     }
     if (form.email === "") {
-      setErrors({ ...errors, email: "empty" });
+      submitError.email = "empty";
     }
     if (form.confirmEmail === "") {
-      setErrors({ ...errors, confirmEmail: "empty" });
+      submitError.confirmEmail = "empty";
     }
     if (form.phoneNumber === "invalid") {
-      setErrors({ ...errors, phoneNumber: "empty" });
+      submitError.phoneNumber = "empty";
     }
-
+    if (
+      form.password === "" ||
+      errors.passwordEightLengthError === "invalid" ||
+      errors.passwordSpecialError === "invalid" ||
+      errors.passwordNumberError === "invalid" ||
+      errors.passwordMixedError === "number"
+    ) {
+      submitError.password = "invalid";
+    }
+    setErrors((prevErrors) => {
+      return { ...prevErrors, ...submitError };
+    });
     if (form.firstName === "") {
       alert("FIRST NAME IS REQUIRED ");
     } else if (form.lastName === "") {
@@ -156,38 +247,53 @@ const SignUpForm = () => {
       alert("PLEASE CONFRIM YOUR EMAIL AGAIN!");
     } else if (errors.phoneNumber === "invalid") {
       alert("ENTER A VALID PHONENUMBER");
-    }
-    // 밑으로 pasword error에 대한 alert
-    // 이 사이에 작성할것!
-    else {
-      setForm({
-        firstName: "",
-        lastName: "",
-        email: "",
-        confirmEmail: "",
-        phoneNumber: "",
-        password: "",
+    } else if (errors.passwordEightLengthError === "invalid") {
+      alert("Please fill at least 8 character");
+    } else if (errors.passwordSpecialError === "invalid") {
+      alert("Please fill at Special character");
+    } else if (errors.passwordNumberError === "invalid") {
+      alert("Please fill at least one number");
+    } else if (errors.passwordMixedError === "invalid") {
+      alert("Please fill at least upper & lower character");
+    } else {
+      setForm((prevForms) => {
+        return {
+          ...prevForms,
+          firstName: "",
+          lastName: "",
+          email: "",
+          confirmEmail: "",
+          phoneNumber: "",
+          password: "",
+        };
+      });
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          password: "",
+          passwordNumberError: "",
+          passwordMixedError: "",
+          passwordSpecialError: "",
+          passwordEightLengthError: "",
+        };
       });
       setDoYouAgree(false);
       window.localStorage.setItem(form.email, JSON.stringify(form));
       alert(form.firstName + "님 회원가입을 축하드려요!!");
     }
   };
-  console.log(form);
-  console.log(errors);
   return (
     <div className="AllContainer">
       <div className="SignUpContainer">
         <div className="textBlock">
           <div>
             Already a Customer?&nbsp;
-            <strong style={{ color: "blue" }}>Sign in!</strong>
+            <strong className="already">Sign in!</strong>
           </div>
         </div>
         <div className="inputWrappingDiv">
           <input
             placeholder="First Name"
-            style={{ marginBottom: "10px" }}
             value={form.firstName}
             onChange={onChangeFirstName}
             className={
@@ -218,7 +324,9 @@ const SignUpForm = () => {
         </div>
         <div
           className={
-            (errors.lastName = "empty" ? "nameValidate" : "nameValidateOk")
+            errors.lastName === "empty"
+              ? "nameValidateLastOk"
+              : "nameValidateLast"
           }
         >
           WRITE YOUR LAST NAME!
@@ -242,12 +350,9 @@ const SignUpForm = () => {
           />
         </div>
         <div
-        // className={
-        //   warningEmail.emailWarning === "" ||
-        //   warningEmail.emailWarning === "fine"
-        //     ? "pleaseConfirm"
-        //     : "pleaseConfirmPlease"
-        // }
+          className={
+            errors.email === "empty" ? "pleaseConfirmPlease" : "pleaseConfirm"
+          }
         >
           PLEASE CHECK YOUR EMAIL!
         </div>
@@ -269,12 +374,9 @@ const SignUpForm = () => {
           />
         </div>
         <div
-        // className={
-        //   warningEmailAgain.confirmEmailWarning === "" ||
-        //   warningEmailAgain.confirmEmailWarning === "fine"
-        //     ? "pleaseConfirm"
-        //     : "pleaseConfirmPlease"
-        // }
+          className={
+            errors.email === "empty" ? "pleaseConfirmPlease" : "pleaseConfirm"
+          }
         >
           PLEASE CONFIRM YOUR EMAIL!
         </div>
@@ -301,76 +403,101 @@ const SignUpForm = () => {
         <div>
           <div className="textStyle">
             CREATE A PASSWORD
-            <span className="weakSpanStyle">WEAK</span>
+            <span
+              className={
+                errors.passwordEightLengthError === "fine" &&
+                errors.passwordMixedError === "fine" &&
+                errors.passwordMixedError === "fine" &&
+                errors.passwordSpecialError === "fine"
+                  ? "weakSpanStyle weakSpanStyleSafe"
+                  : "weakSpanStyle"
+              }
+            >
+              {errors.passwordEightLengthError === "fine" &&
+              errors.passwordMixedError === "fine" &&
+              errors.passwordMixedError === "fine" &&
+              errors.passwordSpecialError === "fine"
+                ? "SAFE"
+                : "WEAK"}
+            </span>
           </div>
         </div>
         <div className="inputWrappingDiv">
           <input
-            // className={
-            //   form.password === ""
-            //     ? "inputStyle"
-            //     : errors.password.Mixed === "fine" &&
-            //       errors.password.Number === "fine" &&
-            //       errors.password.eightLength === "fine" &&
-            //       errors.password.Special === "fine"
-            //     ? "inputStyle SignUpInputRight"
-            //     : "inputStyle SignUpInputWrong"
-            // }
+            className={
+              form.password === ""
+                ? "inputStyle"
+                : errors.passwordMixedError === "fine" &&
+                  errors.passwordNumberError === "fine" &&
+                  errors.passwordEightLengthError === "fine" &&
+                  errors.passwordSpecialError === "fine"
+                ? "inputStyle SignUpInputRight"
+                : "inputStyle SignUpInputWrong"
+            }
             placeholder="********"
             type="password"
             onChange={onChangePassword}
             value={form.password}
           />
         </div>
-        <div>PLEASE CHECK YOUR PASSWORD!</div>
+        <div
+          className={
+            errors.password === "invalid"
+              ? "pleaseConfirmPlease"
+              : "pleaseConfirm"
+          }
+        >
+          PLEASE CHECK YOUR PASSWORD!
+        </div>
         <div className="BsStyle">
           <div
-          // className={
-          //   errors.password.eightLength === "empty" ||
-          //   errors.password.eightLength === ""
-          //     ? "BsStyleInnerText"
-          //     : errors.password.eightLength === "invalid"
-          //     ? "BsStyleInnerText PasswordWrong"
-          //     : "BsStyleInnerText PasswordRight"
-          // }
+            className={
+              errors.passwordEightLengthError === "empty" ||
+              errors.passwordEightLengthError === ""
+                ? "BsStyleInnerText"
+                : errors.passwordEightLengthError === "invalid"
+                ? "BsStyleInnerText PasswordWrong"
+                : "BsStyleInnerText PasswordRight"
+            }
           >
             <BsFillExclamationTriangleFill />
             At least 8 characters
           </div>
           <div
-          // className={
-          //   errors.password.Special === "" ||
-          //   errors.password.Special === "empty"
-          //     ? "BsStyleInnerText"
-          //     : errors.password.Special === "invalid"
-          //     ? "BsStyleInnerText PasswordWrong"
-          //     : "BsStyleInnerText PasswordRight"
-          // }
+            className={
+              errors.passwordSpecialError === "empty" ||
+              errors.passwordSpecialError === ""
+                ? "BsStyleInnerText"
+                : errors.passwordSpecialError === "invalid"
+                ? "BsStyleInnerText PasswordWrong"
+                : "BsStyleInnerText PasswordRight"
+            }
           >
             <BsFillExclamationTriangleFill />
             One special character
           </div>
           <div
-          // className={
-          //   errors.password.Number === "" ||
-          //   errors.password.Number === "empty"
-          //     ? "BsStyleInnerText"
-          //     : errors.password.Number === "invalid"
-          //     ? "BsStyleInnerText PasswordWrong"
-          //     : "BsStyleInnerText PasswordRight"
-          // }
+            className={
+              errors.passwordNumberError === "empty" ||
+              errors.passwordNumberError === ""
+                ? "BsStyleInnerText"
+                : errors.passwordNumberError === "invalid"
+                ? "BsStyleInnerText PasswordWrong"
+                : "BsStyleInnerText PasswordRight"
+            }
           >
             <BsFillExclamationTriangleFill />
             At least one number
           </div>
           <div
-          // className={
-          //   errors.password.Mixed === "empty" || errors.password.Mixed === ""
-          //     ? "BsStyleInnerText"
-          //     : errors.password.Mixed === "invalid"
-          //     ? "BsStyleInnerText PasswordWrong"
-          //     : "BsStyleInnerText PasswordRight"
-          // }
+            className={
+              errors.passwordMixedError === "empty" ||
+              errors.passwordMixedError === ""
+                ? "BsStyleInnerText"
+                : errors.passwordMixedError === "invalid"
+                ? "BsStyleInnerText PasswordWrong"
+                : "BsStyleInnerText PasswordRight"
+            }
           >
             <BsFillExclamationTriangleFill />
             Mixed upper &amp; lowercase
@@ -383,25 +510,9 @@ const SignUpForm = () => {
             onChange={() => doYouAgreeClick()}
           />
           Agree to the &nbsp;
-          <div
-            style={{
-              display: "inline",
-              textDecoration: "underLine",
-              cursor: "pointer",
-            }}
-          >
-            Terms
-          </div>
+          <div className="TermsAndPrivacy">Terms</div>
           &nbsp;&amp;&nbsp;
-          <div
-            style={{
-              display: "inline",
-              textDecoration: "underLine",
-              cursor: "pointer",
-            }}
-          >
-            Privacy policy
-          </div>
+          <div className="TermsAndPrivacy">Privacy policy</div>
         </div>
         <button
           disabled={doYouAgree ? false : true}
@@ -414,7 +525,7 @@ const SignUpForm = () => {
         >
           CREATE AN ACCOUNT
         </button>
-        <div style={{ textAlign: "center" }}>or</div>
+        <div className="orStyle">or</div>
         <button onClick={onMoveMain} className="GoMainBtnStyle">
           GO MAIN
         </button>

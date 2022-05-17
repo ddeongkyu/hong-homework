@@ -15,6 +15,10 @@
 }
 .inputWrappingDiv {
   text-align: center;
+  margin-bottom: 10px;
+}
+.already {
+  color: blue;
 }
 .textBlock {
   text-align: center;
@@ -100,6 +104,9 @@
 .SigninBtnStyleActive:active {
   background: #96f2d7;
 }
+.orStyle {
+  text-align: center;
+}
 .pleaseConfirm {
   display: none;
 }
@@ -151,9 +158,11 @@
   position: absolute;
   right: 0;
 }
-.weakSpanStyleHmm {
-  color: #ff6b6b;
-}
 .weakSpanStyleSafe {
   color: #96f2d7;
+}
+.TermsAndPrivacy {
+  display: inline;
+  text-decoration: underline;
+  cursor: pointer;
 }
