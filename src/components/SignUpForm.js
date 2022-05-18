@@ -62,7 +62,7 @@ const SignUpForm = () => {
       setErrors((prevErrors) => {
         return {
           ...prevErrors,
-          lastName: value,
+          lastName: "",
         };
       });
     }
@@ -90,7 +90,7 @@ const SignUpForm = () => {
       setErrors((prevErrors) => {
         return {
           ...prevErrors,
-          email: "fine",
+          email: "",
         };
       });
     }
@@ -115,7 +115,7 @@ const SignUpForm = () => {
       setErrors((prevErrors) => {
         return {
           ...prevErrors,
-          confirmEmail: "fine",
+          confirmEmail: "",
         };
       });
     }
@@ -163,7 +163,7 @@ const SignUpForm = () => {
     if (value === "") {
       passwrodError.passwordEightLengthError = "";
     } else if (regLegth.test(value)) {
-      passwrodError.passwordEightLengthError = "fine";
+      passwrodError.passwordEightLengthError = "Validation Satisfaction";
     } else if (!regLegth.test(value)) {
       passwrodError.passwordEightLengthError = "invalid";
     }
@@ -174,7 +174,7 @@ const SignUpForm = () => {
     } else if (!regSpecial.test(value)) {
       passwrodError.passwordSpecialError = "invalid";
     } else if (regSpecial.test(value)) {
-      passwrodError.passwordSpecialError = "fine";
+      passwrodError.passwordSpecialError = "Validation Satisfaction";
     }
     // Mixed upper & lowercase Validate
     const regMixed = /(?=.*?[a-z])(?=.*?[A-Z])/;
@@ -183,7 +183,7 @@ const SignUpForm = () => {
     } else if (!regMixed.test(value)) {
       passwrodError.passwordMixedError = "invalid";
     } else if (regMixed.test(value)) {
-      passwrodError.passwordMixedError = "fine";
+      passwrodError.passwordMixedError = "Validation Satisfaction";
     }
 
     // one Number Validate
@@ -193,7 +193,7 @@ const SignUpForm = () => {
     } else if (!regNumber.test(value)) {
       passwrodError.passwordNumberError = "invalid";
     } else if (regNumber.test(value)) {
-      passwrodError.passwordNumberError = "fine";
+      passwrodError.passwordNumberError = "Validation Satisfaction";
     }
     setErrors((prevErrors) => {
       return { ...prevErrors, ...passwrodError, password: "" };
@@ -405,18 +405,18 @@ const SignUpForm = () => {
             CREATE A PASSWORD
             <span
               className={
-                errors.passwordEightLengthError === "fine" &&
-                errors.passwordMixedError === "fine" &&
-                errors.passwordMixedError === "fine" &&
-                errors.passwordSpecialError === "fine"
+                errors.passwordEightLengthError === "Validation Satisfaction" &&
+                errors.passwordMixedError === "Validation Satisfaction" &&
+                errors.passwordNumberError === "Validation Satisfaction" &&
+                errors.passwordSpecialError === "Validation Satisfaction"
                   ? "weakSpanStyle weakSpanStyleSafe"
                   : "weakSpanStyle"
               }
             >
-              {errors.passwordEightLengthError === "fine" &&
-              errors.passwordMixedError === "fine" &&
-              errors.passwordMixedError === "fine" &&
-              errors.passwordSpecialError === "fine"
+              {errors.passwordEightLengthError === "Validation Satisfaction" &&
+              errors.passwordNumberError === "Validation Satisfaction" &&
+              errors.passwordMixedError === "Validation Satisfaction" &&
+              errors.passwordSpecialError === "Validation Satisfaction"
                 ? "SAFE"
                 : "WEAK"}
             </span>
@@ -427,10 +427,11 @@ const SignUpForm = () => {
             className={
               form.password === ""
                 ? "inputStyle"
-                : errors.passwordMixedError === "fine" &&
-                  errors.passwordNumberError === "fine" &&
-                  errors.passwordEightLengthError === "fine" &&
-                  errors.passwordSpecialError === "fine"
+                : errors.passwordMixedError === "Validation Satisfaction" &&
+                  errors.passwordNumberError === "Validation Satisfaction" &&
+                  errors.passwordEightLengthError ===
+                    "Validation Satisfaction" &&
+                  errors.passwordSpecialError === "Validation Satisfaction"
                 ? "inputStyle SignUpInputRight"
                 : "inputStyle SignUpInputWrong"
             }
